@@ -1,0 +1,162 @@
+<section class="content-header">
+  <h1>
+    Dashboard
+    <small>administrator</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Examples</a></li>
+    <li class="active">Blank page</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>??</h3>
+            <p>Pelamar Lolos</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-user-plus"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+          <div class="inner">
+            <h3>??</h3>
+
+            <p>Pelamar Tidak Lolos</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-user-times"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+          <div class="inner">
+            <h3>??</h3>
+
+            <p>Jumlah Soal</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-sticky-note"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <h3>??</h3>
+
+            <p>Jenis Soal</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-book"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-info" style="height: 400px;">
+          <div class="box-header with-border">
+            <i class="pi pi-chart-line"></i>
+
+            <h3 class="box-title"> Grafik Hasil Psikotes</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <a href="admin-page/candidates">aa</a>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-6">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <i class="fa fa-bullhorn"></i>
+            <h3 class="box-title">Recent Test</h3>
+            <div class="pull-right">
+              <a href="#"><small>Show Details</small></a>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p-table [columns]="cols" [value]="cars" [lazy]="true" (onLazyLoad)="loadCarsLazy($event)" [paginator]="true" 
+                [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Kandidat</th>
+                        <th>Waktu Tes</th>
+                        <th>Status</th>
+                        <th>Posisi</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let i=index let-columns="columns">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>e</td>
+                        <td>f</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-6">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <i class="pi pi-sort-amount-down"></i> 
+            <h3 class="box-title">Peringkat Nilai Psikotes</h3>
+          </div>
+          <div class="box-body">
+            
+            <p-table>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Kandidat</th>
+                        <th>Nilai</th>
+                        <th>Posisi</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let i=index let-columns="columns">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>e</td>
+                        <td>f</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    
+</section>
+<!-- /.content -->

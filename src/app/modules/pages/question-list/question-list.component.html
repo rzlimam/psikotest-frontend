@@ -1,0 +1,58 @@
+<section class="content-header">
+    <h1>
+      Question
+      <small>list all question</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Question List</li>
+    </ol>
+  </section>
+  
+  <!-- Main content -->
+  <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <p-table>
+                <ng-template pTemplate="caption">
+                  <div class="ui-helper-clearfix" style="text-align: right;">
+                    <input id="input" type="text" pInputText [(ngModel)]="text" style="font-size:13pt; font-style: normal;" placeholder="Search...."> | 
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select by" optionLabel="name" [showClear]="true"></p-dropdown> | 
+                    <button type="button" pButton icon="pi pi-search" iconPos="left" label="Search" (click)="dt.exportCSV({selectionOnly:true})"></button>
+                </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Vin</th>
+                        <th>Year</th>
+                        <th>Brand</th>
+                        <th>Color</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body">
+                    <tr>
+                        <td>{{car.vin}}</td>
+                        <td>{{car.year}}</td>
+                        <td>{{car.brand}}</td>
+                        <td>{{car.color}}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary" let-rowData>
+                  <div style="text-align:left">
+                      <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
+                  </div>
+              </ng-template>
+            </p-table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+      
+  </section>
+  <!-- /.content -->
+  

@@ -102,8 +102,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p-table [columns]="cols" [value]="cars" [lazy]="true" (onLazyLoad)="loadCarsLazy($event)" [paginator]="true" 
-                [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
+            <p-table [lazy]="true" [paginator]="true" [rows]="10">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th>No</th>
@@ -113,9 +112,9 @@
                         <th>Posisi</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-rowData let i=index let-columns="columns">
+                <ng-template pTemplate="body">
                     <tr>
-                        <td>{{i+1}}</td>
+                        <td>a</td>
                         <td>e</td>
                         <td>f</td>
                     </tr>
@@ -146,7 +145,7 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let i=index let-columns="columns">
                     <tr>
-                        <td>{{i+1}}</td>
+                        <td>a</td>
                         <td>e</td>
                         <td>f</td>
                     </tr>

@@ -16,35 +16,97 @@
           <div class="box box-info">
             <!-- /.box-header -->
             <div class="box-body">
-              <p-table>
-                <ng-template pTemplate="caption">
+              <p-table [columns]="cols" [value]="questions" dataKey="questionTitle" [paginator]="true" [rows]="10">
+                <!-- <ng-template pTemplate="caption">
                   <div class="ui-helper-clearfix" style="text-align: right;">
-                    <input id="input" type="text" style="font-size:13pt; font-style: normal;" placeholder="Search...."> | 
-                    <p-dropdown  placeholder="Select by" [showClear]="true"></p-dropdown> | 
-                    <button type="button" pButton icon="pi pi-search" iconPos="left" label="Search"></button>
+                    <input id="input" type="text" pInputText [(ngModel)]="text" style="font-size:13pt; font-style: normal;" placeholder="Search...."> | 
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select by" optionLabel="name" [showClear]="true"></p-dropdown> | 
+                    <button type="button" pButton icon="pi pi-search" iconPos="left" label="Search" (click)="dt.exportCSV({selectionOnly:true})"></button>
                 </div>
-                </ng-template>
-                <ng-template pTemplate="header">
+                </ng-template> -->
+                <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th>Vin</th>
-                        <th>Year</th>
-                        <th>Brand</th>
-                        <th>Color</th>
+                        <th style="width: 3em"></th>
+                        <th *ngFor="let col of columns">
+                          {{col.header}}
+                        </th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body">
+                <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                     <tr>
-                        <td>vyuy</td>
-                        <td>ljmfuy</td>
-                        <td>iohi</td>
-                        <td>iti</td>
+                        <td>
+                          <a href="#" [pRowToggler]="rowData">
+                            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                          </a>
+                        </td>
+                        <td>{{rowData.questionTitle}}</td>
+                        <td>{{rowData.dateOfQuestion | date: 'yyyy-MM-dd hh:mm'}}</td>
+                        <td>{{rowData.questionType?.questionTypeTitle}}</td>
+                        <td>{{rowData.data?.question}}</td>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="summary" let-rowData>
+                <!-- <ng-template pTemplate="summary" let-rowData>
                   <div style="text-align:left">
-                      <button type="button" pButton icon="fa fa-plus" label="Add"></button>
+                      <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
                   </div>
-              </ng-template>
+              </ng-template> -->
+              <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                <tr>
+                    <td [attr.colspan]="columns.length + 1">
+                      
+                        <div class="ui-g ui-fluid" style="font-size:14px;padding:5px">
+                            <div class="ui-g-12 ui-sm-9">
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                      <table border="2" bordercolor="#d9d9d9">
+                                        <tr>
+                                          <th style="width: 200px; padding: 5px;">Question Title</th>
+                                          <td style="padding: 5px;">{{rowData.questionTitle}}</td>
+                                        </tr>
+                                        <tr>
+                                          <th style="width: 200px; padding: 5px;">Release Date</th>
+                                          <td style="padding: 5px;">{{rowData.dateOfQuestion | date: 'yyyy-MM-dd hh:mm'}}</td>
+                                        </tr>
+                                        <tr>
+                                          <th style="width: 200px; padding: 5px;">Question Maker</th>
+                                          <td style="padding: 5px;">{{rowData.user?.profile?.profileName}}</td>
+                                        </tr>
+                                        <tr>
+                                          <th style="width: 200px; padding: 5px;">Question Type</th>
+                                          <td style="padding: 5px;">{{rowData.questionType?.questionTypeTitle}}</td>
+                                        </tr>
+                                        <tr>
+                                          <th style="width: 200px; padding: 5px;">Question</th>
+                                          <td style="padding: 5px;">{{rowData.data?.question}}</td>
+                                        </tr>
+                                        <tr>
+                                          <th rowspan="4" style="width: 200px; padding: 5px;">Answer</th>
+                                          <td style="padding: 5px;"> {{rowData.data?.choiceA}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td style="padding: 5px;"> {{rowData.data?.choiceB}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td style="padding: 5px;"> {{rowData.data?.choiceC}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td style="padding: 5px;"> {{rowData.data?.choiceD}}</td>
+                                        </tr>
+                                        <tr>
+                                          <th rowspan="2" style="width: 200px; padding: 5px;">Correct Answer</th>
+                                          <td style="padding: 5px;"> {{rowData.answer?.validAnswer1}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td style="padding: 5px;"> {{rowData.answer?.validAnswer2}}</td>
+                                        </tr>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
             </p-table>
             </div>
             <!-- /.box-body -->

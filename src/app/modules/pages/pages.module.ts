@@ -16,6 +16,8 @@ import { QuestiontypeComponent } from './questiontype/questiontype.component';
 import { QuestionpackageComponent } from './questionpackage/questionpackage.component';
 import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -31,7 +33,8 @@ import { UserComponent } from './user/user.component';
     DropdownModule,
     FormsModule,
     TableModule,
-    CardModule
+    CardModule,
+    HttpClientModule
   ]
 })
 export class PagesModule {

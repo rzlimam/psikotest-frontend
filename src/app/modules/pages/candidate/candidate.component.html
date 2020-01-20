@@ -16,35 +16,37 @@
           <div class="box box-info">
             <!-- /.box-header -->
             <div class="box-body">
-              <p-table>
-                <ng-template pTemplate="caption">
+              <p-table [value]="profiles">
+                <!-- <ng-template pTemplate="caption">
                   <div class="ui-helper-clearfix" style="text-align: right;">
-                    <input id="input" type="text" style="font-size:13pt; font-style: normal;" placeholder="Search...."> | 
-                    <p-dropdown placeholder="Select by" optionLabel="name" [showClear]="true"></p-dropdown> | 
-                    <button type="button" pButton icon="pi pi-search" iconPos="left" label="Search"></button>
+                    <input id="input" type="text" pInputText [(ngModel)]="text" style="font-size:13pt; font-style: normal;" placeholder="Search...."> | 
+                    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select by" optionLabel="name" [showClear]="true"></p-dropdown> | 
+                    <button type="button" pButton icon="pi pi-search" iconPos="left" label="Search" (click)="dt.exportCSV({selectionOnly:true})"></button>
                 </div>
-                </ng-template>
+                </ng-template> -->
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>Vin</th>
-                        <th>Year</th>
-                        <th>Brand</th>
-                        <th>Color</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body">
+                <ng-template pTemplate="body" let-row>
                     <tr>
-                        <td>dcs</td>
-                        <td>kbk</td>
-                        <td>yifu</td>
-                        <td>igiug</td>
+                        <td>{{row.profileName}}</td>
+                        <td>{{row.gender}}</td>
+                        <td>{{row.address}}</td>
+                        <td>{{row.phone}}</td>
+                        <td>{{row.email}}</td>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="summary">
+                <!-- <ng-template pTemplate="summary" let-rowData>
                   <div style="text-align:left">
-                      <button type="button" pButton icon="fa fa-plus" label="Add"></button>
+                      <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
                   </div>
-              </ng-template>
+                </ng-template> -->
             </p-table>
             </div>
             <!-- /.box-body -->

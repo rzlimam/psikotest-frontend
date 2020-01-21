@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  private apiURL = 'http://localhost:8080';
+  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
 
   
   constructor(private http: HttpClient) { }

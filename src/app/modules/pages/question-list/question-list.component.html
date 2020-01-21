@@ -16,28 +16,28 @@
           <!-- Custom Tabs -->
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab_1" data-toggle="tab">Question List</a></li>
-              <li><a href="#tab_2" data-toggle="tab">Question Type</a></li>
-              <li><a href="#tab_3" data-toggle="tab">Question Package</a></li>
-              <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+              <li class="active"><a href="#question_list" data-toggle="tab">Question List</a></li>
+              <li><a href="#question_type" data-toggle="tab">Question Type</a></li>
+              <li><a href="#qusetion_package" data-toggle="tab">Question Package</a></li>
             </ul>
             <div class="tab-content">
-              <p-card [style]="{width: '400px'}">
-                <div class="ui-g">
-                  <div class="ui-g-12 ui-md-6 ui-lg-5">
-                    <input id="input" type="text" size="20" style="width: 83px;height: 33px;"> 
+
+              <div class="tab-pane active" id="question_list">
+                <p-card [style]="{width: '450px'}">
+                  <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                      <p-dropdown autoWidth="true" [options]="dropdownOptions" [(ngModel)]="data" [style]="{'width':'100%'}" appendTo="body"></p-dropdown>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                      <div class="ui-inputgroup">
+                        <input type="text" pInputText placeholder="Search...">   
+                        <button pButton type="button" icon="pi pi-search" class="ui-button-warn"></button>      
+                      </div>
+                    </div>
                   </div>
-                  <div class="ui-g-12 ui-md-6 ui-lg-5">
-                    <p-dropdown autoWidth="true" [options]="dropdownOptions" [(ngModel)]="data" [style]="{'width':'100%'}"  appendTo="body"></p-dropdown>
-                  </div>
-                  <div class="ui-g-12 ui-lg-3">
-                    <button pButton type="button" label="Primary" [style]="{width: '100px'}" class="ui-button-rounded"></button>
-                  </div>
-                </div>
-              </p-card>
-              <br>
-              <div class="tab-pane active" id="tab_1">
-                <p-table [columns]="cols" [value]="questions" dataKey="questionTitle" [paginator]="true" [rows]="10">
+                </p-card>              
+                <br>
+                <p-table [columns]="cols" [value]="qList" dataKey="questionTitle" [paginator]="true" [rows]="10">
                   <ng-template pTemplate="header" let-columns>
                       <tr>
                           <th style="width: 3em"></th>
@@ -124,7 +124,7 @@
                 </p-table>
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2">
+              <div class="tab-pane" id="question_type">
                 The European languages are members of the same family. Their separate existence is a myth.
                 For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
                 in their grammar, their pronunciation and their most common words. Everyone realizes why a
@@ -134,7 +134,7 @@
                 and regular than that of the individual languages.
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_3">
+              <div class="tab-pane" id="qusetion_package">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                 when an unknown printer took a galley of type and scrambled it to make a type specimen book.

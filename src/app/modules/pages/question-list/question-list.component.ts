@@ -22,7 +22,8 @@ import { state, style, trigger, transition, animate } from '@angular/animations'
 ]
 })
 export class QuestionListComponent implements OnInit {
-  questions:any;
+  qList:any;
+  qType:any;
   cols:any[];
   columns = [];
   datas = [ 1, 2 ];
@@ -46,7 +47,7 @@ export class QuestionListComponent implements OnInit {
   }
   public getQuestion(){
     let resp = this.srv.getQuestionList();
-    resp.subscribe(res => {this.questions = res});
+    resp.subscribe(res => {this.qList = res});
   }
 
 }

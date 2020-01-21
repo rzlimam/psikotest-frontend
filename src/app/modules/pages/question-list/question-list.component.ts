@@ -24,6 +24,12 @@ import { state, style, trigger, transition, animate } from '@angular/animations'
 export class QuestionListComponent implements OnInit {
   questions:any;
   cols:any[];
+  columns = [];
+  datas = [ 1, 2 ];
+  dropdownOptions = [
+      { label: 'X', value: 1 },
+      { label: 'Y', value: 2 },
+  ];
 
   constructor(private srv:QuestionService, private router:Router) { }
 
@@ -35,6 +41,8 @@ export class QuestionListComponent implements OnInit {
       {field : 'questionType.questionTypeTitle', header : 'Question Type'},
       {field : 'data.question', header : 'Question'}
     ];
+    this.columns = [0];
+
   }
   public getQuestion(){
     let resp = this.srv.getQuestionList();

@@ -16,23 +16,22 @@
           <div class="box box-info">
             <!-- /.box-header -->
             <div class="box-body">
-                <!-- <p-table>
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Kandidat</th>
-                            <th>Nilai</th>
-                            <th>Posisi</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData let i=index let-columns="columns">
-                        <tr>
-                            <td>{{i+1}}</td>
-                            <td>e</td>
-                            <td>f</td>
-                        </tr>
-                    </ng-template>
-                </p-table> -->
+              <p-table [value]="userss" [paginator]="true" [rows]="10">
+                <ng-template pTemplate="header">
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td>{{row.profile?.profileName}}</td>
+                        <td>{{row.profile?.email}}</td>
+                        <td>{{row.role?.namaRole}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
             </div>
             <!-- /.box-body -->
           </div>

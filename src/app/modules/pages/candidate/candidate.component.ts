@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Profile } from 'src/app/common/model/Profile';
 import { ProfileService } from 'src/app/common/services/profile.service';
 import { Router } from '@angular/router';

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProfileService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'bootcamp.linovhr.com:8080/psikotest2';
   
 
   constructor(private http:HttpClient) { }

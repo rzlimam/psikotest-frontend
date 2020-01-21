@@ -6,8 +6,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   private apiURL = 'http://localhost:8080';
+
+  
   constructor(private http: HttpClient) { }
   public getAllUser() {
-    return this.http.get(this.apiURL + '/user');
+    return this.http.get(this.apiURL+'/user');
   }
 }

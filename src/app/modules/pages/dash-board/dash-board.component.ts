@@ -11,18 +11,27 @@ interface Book {
   styleUrls: ['./dash-board.component.scss']
 })
 export class DashBoardComponent implements OnInit {
-  books: Book[];
-  selectedBook: string;
+  data: any;
 
   constructor() {
-    this.books = [
-      {name: 'Book1', author: 'Author1'},
-      {name: 'Book2', author: 'Author2'},
-      {name: 'Book3', author: 'Author3'},
-      {name: 'Book4', author: 'Author4'},
-      {name: 'Book5', author: 'Author5'}
-  ];
-  }
+    this.data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [
+            {
+                label: 'Peserta Lolos Psikotest',
+                backgroundColor: '#42A5F5',
+                borderColor: '#1E88E5',
+                data: [65, 59, 80, 81, 56, 55, 40, 50, 90, 77, 40, 50]
+            },
+            {
+                label: 'Peserta Tidak Lolos Psikotest',
+                backgroundColor: '#9CCC65',
+                borderColor: '#7CB342',
+                data: [28, 48, 40, 19, 86, 27, 90, 33, 56, 77, 98, 5]
+            }
+        ]
+    }
+}
 
   ngOnInit() {
   }

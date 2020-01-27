@@ -7,4 +7,11 @@ export class User {
     role: Role;
     profile: Profile;
     isActive: Boolean;
+    constructor(
+        userId: any,
+        password: any,
+        role: any,
+        profile: any,
+        isActive: any
+    ){}
 }

@@ -1,6 +1,13 @@
+import { Time } from '@angular/common';
+import { PackagDetail } from './PackageDetail';
+
 export class Package {
-    answerTypeId: string;
-    codeAnswerType: string;
-    typeOfAnswer: string;
-    amountOfAnswer: number;
+   constructor(
+      isActive : any,
+      packageName : any,
+      amountOfTime: any,
+      description : any,
+      packageId : any,
+      packageDetail: PackagDetail
+   ){}
 }

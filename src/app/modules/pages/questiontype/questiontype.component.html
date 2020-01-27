@@ -1,1 +1,67 @@
-<p>questiontype works!</p>
+<section class="content-header">
+    <h1>
+      Question Type
+      <small>list all of question types</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Question Types</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <p-table [value]="qType">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th *ngFor="let col of cols2">
+                            {{col.header}}
+                        </th>
+                        <th style="width:7em">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-qType>
+                    <tr>
+                        <td>{{qType.questionTypeTitle}}</td>
+                        <td>{{qType.amountOfAnswer}}</td>
+                        <td style="text-align: center;">
+                          <button pButton type="button" icon="pi pi-pencil" class="ui-button-info"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary" let-rowData>
+                    <div style="text-align:left">
+                        <button type="button" pButton icon="fa fa-plus" (click)="showDialog2()"  label="Add"></button>
+                    </div>
+                </ng-template>
+              </p-table>
+
+              <!-- Dialog -->
+              <p-dialog header="Add Question Type" [(visible)]="display2" [modal]="true" [responsive]="true" [style]="{width: '500px', minWidth: '500px'}" [minY]="500" [baseZIndex]="10000">
+                <form>
+                  <div class="form-group">
+                    <label>Question Type Title</label>
+                    <input id="input" type="text" name="title" [(ngModel)]="type.questionTypeTitle" class="form-control" size="30"> 
+                  </div>
+                  <div class="form-group">
+                    <label>Total Answer</label>
+                    <div class="ui-g">
+                      <div class="ui-g-6">
+                        <p-radioButton name="Option 1" value="1" label="1" [(ngModel)]="type.amountOfAnswer" inputId="opt1"></p-radioButton>
+                      </div>
+                      <div class="ui-g-6">
+                        <p-radioButton name="Option 2" value="2" label="2" [(ngModel)]="type.amountOfAnswer" inputId="opt2"></p-radioButton>
+                      </div>
+                    </div>
+                    <p>Selected Value = {{type.questionTypeTitle}}</p>
+                    <p>Selected Value = {{type.amountOfAnswer||'none'}}</p>
+                  </div>
+                </form>
+                      <p-footer>
+                          <a type="button" pButton icon="pi pi-check" (click)="saveQuestionType()" href="admin-page/question-type" label="Save"></a>
+                      </p-footer>
+              </p-dialog>
+        </div>
+    </div>
+</section>

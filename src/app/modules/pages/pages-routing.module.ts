@@ -8,6 +8,7 @@ import { QuestionpackageComponent } from './questionpackage/questionpackage.comp
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
 import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
+import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
 
 
 const routes: Routes = [
@@ -18,9 +19,10 @@ const routes: Routes = [
         {path: 'candidates', component: CandidateComponent},
         {path: 'question-list', component: QuestionListComponent},
         {path: 'question-package', component: QuestionpackageComponent},
+        {path: 'question-package/add', component: AddPackageDetailComponent},
         {path: 'question-type', component: QuestiontypeComponent},
         {path: 'test-result', component: ResultTestComponent},
-        {path: 'users', component: UserComponent}
+        {path: 'users', component: UserComponent},
     ]
   }
 ];

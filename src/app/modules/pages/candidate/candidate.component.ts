@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./candidate.component.scss']
 })
 export class CandidateComponent implements OnInit {
-  displayDialog:boolean;
+  display:boolean;
   selectedProfile:Profile;
   newProfile: boolean;
   profiles:any;
@@ -22,5 +22,8 @@ export class CandidateComponent implements OnInit {
   getProfile(){
     let resp = this.srv.getProfileList();
     resp.subscribe(res => {this.profiles = res});
+  }
+  showDialogCandidate() {
+    this.display = true;
   }
 }

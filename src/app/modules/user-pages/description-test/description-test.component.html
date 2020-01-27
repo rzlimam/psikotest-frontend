@@ -1,1 +1,60 @@
-<p>description-test works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+  background-image: url("https://i.imgur.com/ztiH9pi.jpg");
+  background-color: #cccccc;
+  height: 700px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+
+<div class="hero-image">
+    <div class="hero-text">
+    <div class="box box-primary">
+        <div class="box-body">
+            <p-panel>
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Terms and Conditions</span>
+                    </div>
+                </p-header>
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+                    kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                <p-footer>
+                    <p-checkbox name="group1" value="New York" label="Saya menyetujui ketentuan yang tertera dan siap untuk mengikuti psikotes ini"></p-checkbox>
+                </p-footer>
+            </p-panel>
+            <br>
+            <button pButton type="button" [routerLink]="['/user-page/start-test']" label="Lanjutkan" class="ui-button-rounded"></button>
+
+
+            
+        </div>
+    </div>
+    </div>
+</div>
+    </body>
+    </html>

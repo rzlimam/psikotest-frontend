@@ -24,18 +24,30 @@
                         <th>Address</th>
                         <th>Phone</th>
                         <th>Email</th>
+                        <th style="width: 4em;"></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-row>
                     <tr>
-                        <td>{{row.profileName}}</td>
-                        <td>{{row.gender}}</td>
-                        <td>{{row.address}}</td>
-                        <td>{{row.phone}}</td>
-                        <td>{{row.email}}</td>
+                        <td>{{row.profile?.profileName}}</td>
+                        <td>{{row.profile?.gender}}</td>
+                        <td>{{row.profile?.address}}</td>
+                        <td>{{row.profile?.phone}}</td>
+                        <td>{{row.profile?.email}}</td>
+                        <td>
+                          <button pButton type="button" (click)="showDialogCandidate()" icon="pi pi-search" class="ui-button-rounded ui-button-info"></button>
+                        </td>
                     </tr>
-                </ng-template>
+                </ng-template>                
             </p-table>
+            <p-dialog header="Title" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '500px', minWidth: '500px'}" [minY]="500" [baseZIndex]="10000">
+              <form>
+                <div class="form-group">
+                  <label>Candidate</label>
+                  <input id="input" type="text" class="form-control" size="30"> 
+                </div>
+              </form>
+            </p-dialog>
             </div>
             <!-- /.box-body -->
           </div>

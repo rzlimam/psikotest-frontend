@@ -7,22 +7,13 @@
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Question List</li>
     </ol>
-  </section>
+</section>
   
   <!-- Main content -->
   <section class="content">
       <div class="row">
         <div class="col-md-12">
           <!-- Custom Tabs -->
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#question_list" data-toggle="tab">Question List</a></li>
-              <li><a href="#question_type" data-toggle="tab">Question Type</a></li>
-              <li><a href="#qusetion_package" data-toggle="tab">Question Package</a></li>
-            </ul>
-            <div class="tab-content">
-
-              <div class="tab-pane active" id="question_list">
                 <p-card [style]="{width: '450px'}">
                   <div class="ui-g">
                     <div class="ui-g-12 ui-md-6 ui-lg-6">
@@ -37,13 +28,14 @@
                   </div>
                 </p-card>              
                 <br>
-                <p-table [columns]="cols" [value]="qList" dataKey="questionTitle" [paginator]="true" [rows]="10">
+                <p-table [columns]="cols1" [value]="qList" dataKey="questionTitle" [paginator]="true" [rows]="10">
                   <ng-template pTemplate="header" let-columns>
                       <tr>
                           <th style="width: 3em"></th>
                           <th *ngFor="let col of columns">
                             {{col.header}}
                           </th>
+                          <th style="width:10em; text-align: center;">Action</th>
                       </tr>
                   </ng-template>
                   <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
@@ -57,16 +49,21 @@
                           <td>{{rowData.dateOfQuestion | date: 'yyyy-MM-dd hh:mm'}}</td>
                           <td>{{rowData.questionType?.questionTypeTitle}}</td>
                           <td>{{rowData.data?.question}}</td>
+                          <td style="text-align: center;">
+                            <button pButton type="button" (click)="showDialog()" icon="pi pi-pencil" class="ui-button-info"></button> | 
+                            <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+                            <button pButton type="button" (click)="deleteQuestion(rowData.questionId)" icon="pi pi-trash" class="ui-button-danger"></button>
+                          </td>
                       </tr>
                   </ng-template>
-                  <ng-template pTemplate="summary" let-rowData>
+                <ng-template pTemplate="summary" let-rowData>
                     <div style="text-align:left">
-                        <button type="button" pButton icon="fa fa-plus" label="Add"></button>
+                        <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
                   <tr>
-                      <td [attr.colspan]="columns.length + 1">
+                      <td [attr.colspan]="columns.length + 2">
                         
                           <div class="ui-g ui-fluid" style="font-size:14px;padding:5px">
                               <div class="ui-g-12 ui-sm-9">
@@ -94,17 +91,17 @@
                                             <td style="padding: 5px;">{{rowData.data?.question}}</td>
                                           </tr>
                                           <tr>
-                                            <th rowspan="4" style="width: 200px; padding: 5px;">Answer</th>
-                                            <td style="padding: 5px;"> {{rowData.data?.choiceA}}</td>
+                                            <th rowspan="4" style="width: 200px; padding: 5px;">Choice</th>
+                                            <td style="padding: 5px;"> A. {{rowData.data?.choiceA}}</td>
                                           </tr>
                                           <tr>
-                                            <td style="padding: 5px;"> {{rowData.data?.choiceB}}</td>
+                                            <td style="padding: 5px;"> B. {{rowData.data?.choiceB}}</td>
                                           </tr>
                                           <tr>
-                                            <td style="padding: 5px;"> {{rowData.data?.choiceC}}</td>
+                                            <td style="padding: 5px;"> C. {{rowData.data?.choiceC}}</td>
                                           </tr>
                                           <tr>
-                                            <td style="padding: 5px;"> {{rowData.data?.choiceD}}</td>
+                                            <td style="padding: 5px;"> D. {{rowData.data?.choiceD}}</td>
                                           </tr>
                                           <tr>
                                             <th rowspan="2" style="width: 200px; padding: 5px;">Correct Answer</th>
@@ -122,36 +119,90 @@
                   </tr>
                 </ng-template>
                 </p-table>
+
+               <!-- Dialog -->
+                <p-dialog header="Detail Question" [(visible)]="display" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+                [draggable]="false" [resizable]="false">
+                <p-tabView>
+                  <p-tabPanel header="Text" leftIcon="fa fa-file-text">
+                    <form>
+                      <div class="form-group">
+                        <label>Question Title</label>
+                        <input id="input" type="text" name="title" [(ngModel)]="question.questionTitle" class="form-control" size="30"> 
+                      </div>
+                      <div class="form-group">
+                        <label>Question Type</label>
+                        <div class="ui-g">
+                        <p-dropdown [options]="qType" name="qType" [style]="{'width':'600px'}" [(ngModel)]="question.questionType" placeholder="Select Question Type" optionLabel="questionTypeTitle"></p-dropdown>
+                      </div>
+                      <!-- <p>ini {{question?.questionType?.questionTypeTitle}}</p> -->
+                      </div>
+                      <div class="form-group">
+                        <label>Question</label>
+                        <textarea name="question" class="form-control" [(ngModel)]="question.data.question" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>Answer Choices</label>
+                        <div class="ui-g">
+                          <div class="ui-g-6">
+                            <span class="ui-float-label">
+                            <input id="float-input" name="choiceA" type="text" [(ngModel)]="question.data.choiceA" size="30" pInputText> 
+                            <label for="float-input">Choice A</label>
+                            </span>
+                          </div>
+                          <div class="ui-g-6">
+                            <span class="ui-float-label">
+                            <input id="float-input" name="choiceC" type="text" [(ngModel)]="question.data.choiceC" size="30" pInputText> 
+                            <label for="float-input">Choice C</label>
+                            </span>
+                          </div>
+                          <div class="ui-g-6">
+                            <span class="ui-float-label">
+                            <input id="float-input" name="choiceB" type="text" [(ngModel)]="question.data.choiceB" size="30" pInputText> 
+                            <label for="float-input">Choice B</label>
+                            </span>
+                          </div>
+                          <div class="ui-g-6">
+                            <span class="ui-float-label">
+                            <input id="float-input" name="choiceD" type="text" [(ngModel)]="question.data.choiceD" size="30" pInputText> 
+                            <label for="float-input">Choice D</label>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Correct Answer</label>
+                        <div class="ui-g">
+                          <div class="ui-g-6">
+                            <span class="ui-float-label">
+                              <input id="float-input" name="validAnswer1" type="text" [(ngModel)]="question.answer.validAnswer1" size="30" pInputText> 
+                              <label for="float-input">Valid Answer 1</label>
+                            </span>
+                          </div>
+                          <div class="ui-g-6">
+                            <span class="ui-float-label">
+                              <input id="float-input" name="validAnswer2" type="text" [(ngModel)]="question.answer.validAnswer2" size="30" pInputText> 
+                              <label for="float-input">Valid Answer 2</label>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <p-footer>
+                        <a type="button" pButton icon="pi pi-check" onclick="return confirm('Are you sure?')" (click)="saveQuestion()" href="admin-page/question-list" label="Save"></a>
+                    </p-footer>
+                  </p-tabPanel>
+                  <p-tabPanel header="Images" leftIcon="fa fa-image">
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                  </p-tabPanel>
+            
+                </p-tabView>
+
+                  
+                </p-dialog>
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="question_type">
-                The European languages are members of the same family. Their separate existence is a myth.
-                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                new common language would be desirable: one could refuse to pay expensive translators. To
-                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                words. If several languages coalesce, the grammar of the resulting language is more simple
-                and regular than that of the individual languages.
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="qusetion_package">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
-              </div>
-              <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-          </div>
-          <!-- nav-tabs-custom -->
-        </div>
-        <!-- /.col -->
       </div>
-      
   </section>
   <!-- /.content -->
   

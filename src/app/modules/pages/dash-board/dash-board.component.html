@@ -12,71 +12,68 @@
 
 <!-- Main content -->
 <section class="content">
-    <div class="row">
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-green">
-          <div class="inner">
-            <h3>??</h3>
-            <p>Pelamar Lolos</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-user-plus"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-red">
-          <div class="inner">
-            <h3>??</h3>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-            <p>Pelamar Tidak Lolos</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-user-times"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="info-box-content">
+          <span class="info-box-text">Peserta Lolos</span>
+          <span class="info-box-number">???</span>
         </div>
+        <!-- /.info-box-content -->
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-          <div class="inner">
-            <h3>??</h3>
-
-            <p>Jumlah Soal</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-sticky-note"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-blue">
-          <div class="inner">
-            <h3>??</h3>
-
-            <p>Jenis Soal</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-book"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      
+      <!-- /.info-box -->
     </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Peserta Tidak Lolos</span>
+          <span class="info-box-number">???</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Jumlah Soal</span>
+          <span class="info-box-number">???</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Jumlah Paket Soal</span>
+          <span class="info-box-number">???</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
     <div class="row">
-      <div class="col-md-6">
-        <div class="box box-info" style="height: 400px;">
+      <div class="col-md-12">
+        <div class="box box-info">
           <div class="box-header with-border">
             <i class="pi pi-chart-line"></i>
 
@@ -84,7 +81,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <a href="admin-page/candidates">aa</a>
+            <p-chart type="bar" [data]="data"></p-chart>
           </div>
           <!-- /.box-body -->
         </div>

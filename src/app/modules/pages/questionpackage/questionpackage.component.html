@@ -1,1 +1,119 @@
-<p>questionpackage works!</p>
+<section class="content-header">
+  <h1>
+    Question Packages
+    <small>list all question packages</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Question Packages</li>
+  </ol>
+</section>
+<section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <p-table [value]="qPackage">
+          <ng-template pTemplate="caption">
+              <div class="ui-helper-clearfix" style="text-align: left;">
+                <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF" class="ui-button-warning"></button>
+                <button type="button" pButton icon="pi pi-cloud-upload" iconPos="left" (click)="assignPackage()" label="Assign Packages to Candidate" style="float:right"></button>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Package Name</th>
+              <th>Working Time</th>
+              <th>Total Question</th>
+              <th>Question Type</th>
+              <th>Description</th>
+              <th style="width: 12em; text-align: center;">Action</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-col>
+            <tr>
+              <td>{{col.packageName}}</td>
+              <td>{{col.amountOfTime}}</td>
+              <td>{{col.totalQuestion}}</td>
+              <td>{{col.questionType}}</td>
+              <td>{{col.description}}</td>
+              <td>
+                <div class="ui-g">
+                  <div class="ui-g-4"><a type="button" (click)="showDialog4('1eea59e9-43b8-480a-8be0-902f148c7335')" class="btn btn-info"><i class="fa fa-search"></i></a></div>
+                  <div class="ui-g-4"><a type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a></div>
+                  <div class="ui-g-4"><a type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a></div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            <div style="text-align:left">
+              <button type="button" pButton icon="pi pi-plus" (click)="showDialog3()" label="Add"></button>
+            </div>
+          </ng-template>          
+        </p-table>
+        <p-dialog header="Add New Package" [(visible)]="display3" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <form>
+              <div class="form-group">
+                <label>Package Name</label>
+                <input id="input" name="packageName" type="text" class="form-control" size="30">
+              </div>
+              <div class="form-group">
+                <label>Working Time</label>
+                <input id="working" name="amountOfTime" type="time" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea pInputTextarea name="description" class="form-control"></textarea>
+              </div>
+            </form>
+                <p-footer>
+                    <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+                    <button type="button" pButton icon="pi pi-times" (click)="display=false" label="No" class="ui-button-secondary"></button>
+                </p-footer>
+        </p-dialog>
+        <p-dialog header="Package Detail" [(visible)]="display4" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="ui-g">
+              <div class="ui-g-4"><b>Package Name</b></div>
+              <div class="ui-g-8">{{packDetail.packageName}}</div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-4"><b>Working Time</b></div>
+              <div class="ui-g-8">{{packDetail.amountOfTime}}</div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-4"><b>Description</b></div>
+              <div class="ui-g-8">{{packDetail.description}}</div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-4"><b>Question Type</b></div>
+              <div class="ui-g-8">{{packDetail.packageDetail?.question?.questionTitle}}</div>
+            </div>
+            <div class="ui-g">
+              <div class="ui-g-4"><b>Questions</b></div>
+              <div class="ui-g-8"></div>
+            </div>
+                <p-footer>
+                    <a type="button" href="/admin-page/question-package/add/" pButton icon="pi pi-plus" label="Add Questions"></a>
+                    <button type="button" pButton icon="pi pi-pencil" (click)="display4=false" label="Edit Package Detail"></button>
+                </p-footer>
+        </p-dialog>
+        <p-dialog header="Assign Packages" [(visible)]="assignDsp" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+              [draggable]="false" [resizable]="false">
+                  <form>
+                    <div class="form-group">
+                      <label>Candidate</label><br>
+                      <p-dropdown [options]="candidate" name="candidate" [(ngModel)]="assign.user" placeholder="Select Candidate" optionLabel="profile.profileName"></p-dropdown>
+                    </div>
+                    <div class="form-group">
+                      <label>Packages</label><br>
+                      <p-multiSelect [options]="qPackage" name="packages" [(ngModel)]="assign.packagee" [panelStyle]="{minWidth:'12em'}" optionLabel="packageName"></p-multiSelect>
+                    </div>
+                  </form>
+                  <p-footer>
+                      <a type="button" pButton icon="pi pi-check" onclick="return confirm('Are you sure?')" (click)="saveAssign()" label="Save"></a>
+                  </p-footer>
+          </p-dialog>
+      </div>
+    </div>
+</section>

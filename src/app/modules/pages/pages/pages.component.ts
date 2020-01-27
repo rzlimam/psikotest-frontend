@@ -8,11 +8,15 @@ declare var $;
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit {
+  stringifiedData: any;  
+  
+  
 
   constructor() {
   }
 
   ngOnInit() {
+    
     window.dispatchEvent(new Event('resize'));
     $('body').addClass('hold-transition skin-blue sidebar-mini');
   }

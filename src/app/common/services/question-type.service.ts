@@ -5,9 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class QuestionTypeService {
-  private apiURL = 'http://localhost:8080';
+  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
   constructor(private http: HttpClient) { }
   public getAllQuestionType() {
     return this.http.get(this.apiURL + '/questiontype');
+  }
+  public addQuestionType(type:object){
+    return this.http.post(this.apiURL+'/questiontype', type);
   }
 }

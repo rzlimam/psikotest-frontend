@@ -42,7 +42,9 @@
               "src/assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
               "src/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css",
               "src/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
-              "src/assets/plugins/iCheck/square/blue.css"
+              "src/assets/plugins/iCheck/square/blue.css",
+              "node_modules/quill/dist/quill.core.css", 
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [
               "src/assets/bower_components/jquery/dist/jquery.min.js",
@@ -63,7 +65,9 @@
               "src/assets/dist/js/adminlte.min.js",
               "src/assets/dist/js/pages/dashboard.js",
               "src/assets/dist/js/demo.js",
-              "src/assets/plugins/iCheck/icheck.min.js"
+              "src/assets/plugins/iCheck/icheck.min.js",
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/quill/dist/quill.js" 
             ]
           },
           "configurations": {

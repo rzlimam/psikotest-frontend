@@ -1,4 +1,7 @@
 export class validAnswer {
-    validAnswer1: string;
-    validAnswer2: string;
+    constructor(
+        validAnswer1: any,
+        validAnswer2: any
+
+    ){    }
 }

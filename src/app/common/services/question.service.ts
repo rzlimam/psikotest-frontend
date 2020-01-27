@@ -11,4 +11,10 @@ export class QuestionService {
   public getQuestionList(){
     return this.http.get(this.apiURL+'/question');
   }
+  public addQuestion(question:object){
+    return this.http.post(this.apiURL+'/question', question);
+  }
+  public deleteById(id){
+    return this.http.delete(this.apiURL+'/question/'+id);
+  }
 }

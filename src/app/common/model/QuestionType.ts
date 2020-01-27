@@ -5,6 +5,12 @@ export class QuestionType {
     questionTypeTitle: string;
     isActive: Boolean;
     answerType: AnswerType;
+    constructor(
+        questionTypeId: any,
+        questionTypeTitle: any,
+        isActive: any,
+        answerType: any,
+    ){   }
 
 
 

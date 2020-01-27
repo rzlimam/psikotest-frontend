@@ -1,12 +1,16 @@
 import { AnswerType } from './AnswerType';
 
 export class QuestionData {
-    question: string;
-    questionImage: string[];
-    choiceA: string;
-    choiceB: string;
-    choiceC: string;
-    choiceD: string;
+    constructor(
+        question: any,
+        questionImage: any[],
+        choiceA: any,
+        choiceB: any,
+        choiceC: any,
+        choiceD: any
+
+    ){}
+    
 
 
 

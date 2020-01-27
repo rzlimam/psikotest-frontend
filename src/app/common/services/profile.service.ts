@@ -13,6 +13,6 @@ export class ProfileService {
   constructor(private http:HttpClient) { }
   
   public getProfileList(){
-   return this.http.get(this.baseUrl+'/profile');
+   return this.http.get(this.baseUrl+'/user/candidate');
   }
 }

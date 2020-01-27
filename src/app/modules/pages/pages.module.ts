@@ -17,14 +17,21 @@ import { QuestionpackageComponent } from './questionpackage/questionpackage.comp
 import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
+import {DialogModule} from 'primeng/dialog';
+import {EditorModule} from 'primeng/editor';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputTextModule} from 'primeng/inputtext';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {AccordionModule} from 'primeng/accordion';
+import {ChartModule} from 'primeng/chart';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {TabViewModule} from 'primeng/tabview';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, QuestionpackageComponent, ResultTestComponent, UserComponent],
+  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, QuestionpackageComponent, ResultTestComponent, UserComponent, AddPackageDetailComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -34,8 +41,18 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     TableModule,
     CardModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    DialogModule,
+    EditorModule,
+    InputTextareaModule,
+    InputTextModule,
+    RadioButtonModule,
+    AccordionModule,
+    ChartModule,
+    ConfirmDialogModule,
+    TabViewModule,
+    MultiSelectModule
+    ]
 })
 export class PagesModule {
 }

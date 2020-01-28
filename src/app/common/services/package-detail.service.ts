@@ -8,6 +8,6 @@ export class PackageDetailService {
   private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
   constructor(private http: HttpClient) { }
   public getAllPackageDetail() {
-    return this.http.get(this.apiURL + '/packdetail');
+    return this.http.get(this.apiURL + '/packagedetail');
   }
 }

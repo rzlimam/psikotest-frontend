@@ -1,1 +1,84 @@
-<p>add-package-detail works!</p>
+<section class="content-header">
+    <h1>
+      Add Package Details
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#">Question Packages</a></li>
+      <li class="active">Add Package Details</li>
+    </ol>
+  </section>
+
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-body">
+                <div class="ui-g">
+                    <div class="ui-g-6">
+                        <div class="ui-g-4">
+                            <b>Package Name</b>
+                        </div>
+                        <div class="ui-g-8">
+                            Nama Package
+                        </div>
+                    </div>
+                    <div class="ui-g-6">
+                        <div class="ui-g-4">
+                            <b>Description</b>
+                        </div>
+                        <div class="ui-g-8">
+                            Deskripsi
+                        </div>
+                    </div>
+                    <div class="ui-g-6">
+                        <div class="ui-g-4">
+                            <b>Working Time</b>
+                        </div>
+                        <div class="ui-g-8">
+                            100 menit
+                        </div>
+                    </div>
+                    <div class="ui-g-6">
+                        <div class="ui-g-4">
+                            <b>Question Type</b>
+                        </div>
+                        <div class="ui-g-8">
+                            Pilihan Tangga
+                        </div>
+                    </div>
+                </div>
+                <p-fieldset legend="Pick Questions">
+                    <p-table [columns]="cols" [value]="details" selectionMode="multiple" [(selection)]="selectedQuestion" [paginator]="true" [rows]="10">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns">{{col.header}}</th>
+                                <th>Action</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+                            <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+                                <td>{{rowData.question?.questionTitle}}</td>
+                                <td>{{rowData.question?.questionType?.questionTypeTitle}}</td>
+                                <td>{{rowData.question?.dateOfQuestion | date: 'yyyy-MM-dd hh:mm'}}</td>
+                                <td><button type="button" pButton icon = "pi pi-pencil" label="Detail" class="ui-button-raised ui-button-warning"></button></td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <ul>
+                                <li *ngFor="let quest of selectedQuestion" style="text-align: left;">
+                                    {{quest.question?.questionTitle}}
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </p-table>
+                </p-fieldset>
+            </div>
+            <div class="box-footer">
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

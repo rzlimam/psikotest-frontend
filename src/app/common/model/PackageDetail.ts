@@ -5,4 +5,9 @@ export class PackagDetail {
     packageQuestionId: string;
     packages: Package;
     question: Questions;
+    constructor(
+        packageQuestionId: any,
+        packages: any,
+        question: any,
+    ){}
 }

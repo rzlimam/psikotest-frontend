@@ -27,6 +27,7 @@ import {ChartModule} from 'primeng/chart';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {TabViewModule} from 'primeng/tabview';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {FieldsetModule} from 'primeng/fieldset';
 import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
 
 
@@ -51,7 +52,8 @@ import { AddPackageDetailComponent } from './questionpackage/add-package-detail/
     ChartModule,
     ConfirmDialogModule,
     TabViewModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FieldsetModule
     ]
 })
 export class PagesModule {

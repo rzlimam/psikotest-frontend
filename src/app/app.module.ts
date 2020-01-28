@@ -7,9 +7,12 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LandingComponent } from './landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { KakiComponent } from './components/kaki/kaki.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
 
 
@@ -17,7 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    AboutComponent,
+    HomeComponent,
+    KakiComponent,
+    ContactComponent,
+    LandingpageComponent,
   ],
   imports: [
     BrowserModule,

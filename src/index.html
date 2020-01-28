@@ -1,71 +1,76 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>Linov Psikotest Online</title>
   <base href="/">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"
     rel="stylesheet">
-  <link rel="shortcut icon" href="../assets/images/m_lwcn_favicon_kcD_icon.ico" title="Favicon" />
+  <!-- Font Awesome Icons -->
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-  <!-- Main ../assets/css/ Files -->
-  <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
+    rel='stylesheet' type='text/css'>
 
-  <!-- Namari Color ../assets/css/ -->
-  <!-- <link rel="stylesheet" href="../assets/css/namari-color.css"> -->
+  <!-- Plugin CSS -->
+  <link href="assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-  <!--Icon Fonts - Font Awesome Icons-->
-  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-
-  <!-- Animate ../assets/css/-->
-  <link href="../assets/css/animate.css" rel="stylesheet" type="text/css">
-
-  <!--Google Webfonts-->
-  <link href='https://fonts.googleapis.com/../assets/css/?family=Open+Sans:400,300,600,700,800' rel='stylesheet'
-    type='text/../assets/css/'>
+  <!-- Theme CSS - Includes Bootstrap -->
+  <!-- <link href="assets/css/creative.min.css" rel="stylesheet"> -->
 </head>
 
 <body class="hold-transition skin-black-light sidebar-mini">
-  <app-root>
-    <div id="preloader">
-      <div id="status" class="la-ball-triangle-path">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-  </app-root>
-  <script src="../assets/js/jquery.1.8.3.min.js"></script>
-  <script src="../assets/js/wow.min.js"></script>
-  <script src="../assets/js/featherlight.min.js"></script>
-  <script src="../assets/js/featherlight.gallery.min.js"></script>
-  <script src="../assets/js/jquery.enllax.min.js"></script>
-  <script src="../src/assets/js/jquery.scrollUp.min.js"></script>
+  <app-root></app-root>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-  <script src="../assets/js/jquery.easing.min.js"></script>
-  <script src="../assets/js/jquery.stickyNavbar.min.js"></script>
-  <script src="../assets/js/jquery.waypoints.min.js"></script>
-  <script src="../assets/js/images-loaded.min.js"></script>
-  <script src="../assets/js/lightbox.min.js"></script>
-  <script src="../assets/js/site.js"></script>
-  <script>
-    function myFunction1() {
-      var x = document.getElementById("pg1");
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
+  <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+  <script src="assets/js/plugins.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // navigation click actions 
+      $('.scroll-link').on('click', function (event) {
+        event.preventDefault();
+        var sectionID = $(this).attr("data-id");
+        scrollToID('#' + sectionID, 750);
+      });
+      // scroll to top action
+      $('.scroll-top').on('click', function (event) {
+        event.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+      });
+      // mobile nav toggle
+      $('#nav-toggle').on('click', function (event) {
+        event.preventDefault();
+        $('#main-nav').toggleClass("open");
+      });
+    });
+    // scroll function
+    function scrollToID(id, speed) {
+      var offSet = 50;
+      var targetOffset = $(id).offset().top - offSet;
+      var mainNav = $('#main-nav');
+      $('html,body').animate({ scrollTop: targetOffset }, speed);
+      if (mainNav.hasClass("open")) {
+        mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+        mainNav.removeClass("open");
       }
     }
-    </script>
-
+    if (typeof console === "undefined") {
+      console = {
+        log: function () { }
+      };
+    }
+  </script>
 </body>
 
 </html>

@@ -19,7 +19,7 @@ const routes: Routes = [
         {path: 'candidates', component: CandidateComponent},
         {path: 'question-list', component: QuestionListComponent},
         {path: 'question-package', component: QuestionpackageComponent},
-        {path: 'question-package/add', component: AddPackageDetailComponent},
+        {path: 'question-package/add-detail', component: AddPackageDetailComponent},
         {path: 'question-type', component: QuestiontypeComponent},
         {path: 'test-result', component: ResultTestComponent},
         {path: 'users', component: UserComponent},

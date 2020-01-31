@@ -11,7 +11,7 @@
   <section class="content">
       <div class="row">
         <div class="col-md-12">
-          <p-table [value]="qPackage">
+          <p-table [value]="qPackage" [paginator]="true" [rows]="10">
             <ng-template pTemplate="caption">
                 <div class="ui-helper-clearfix" style="text-align: left;">
                   <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF" class="ui-button-warning"></button>
@@ -31,7 +31,7 @@
             <ng-template pTemplate="body" let-col>
               <tr>
                 <td>{{col.packageName}}</td>
-                <td>{{col.amountOfTime}}</td>
+                <td>{{col.amountOfTime}} minutes</td>
                 <td>{{col.totalQuestion}}</td>
                 <td>{{col.questionType}}</td>
                 <td>{{col.description}}</td>

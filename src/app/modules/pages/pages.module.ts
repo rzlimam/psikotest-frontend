@@ -34,6 +34,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
+import {ToastModule} from 'primeng/toast';
+
 
 
 
@@ -60,7 +62,8 @@ import {DropdownModule} from 'primeng/dropdown';
     TabViewModule,
     MultiSelectModule,
     FieldsetModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ToastModule
     ]
 })
 export class PagesModule {

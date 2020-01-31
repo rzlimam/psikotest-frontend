@@ -13,6 +13,8 @@ import {ButtonModule} from 'primeng/button';
 import { StartTestComponent } from './start-test/start-test.component';
 import {CardModule} from 'primeng/card';
 import { UserLayoutModule } from '../user-layout/user-layout.module';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 
 
 
@@ -27,7 +29,8 @@ import { UserLayoutModule } from '../user-layout/user-layout.module';
     SplitButtonModule,
     ButtonModule,
     CardModule,
-    UserLayoutModule
+    UserLayoutModule,
+    RadioButtonModule
   ]
 })
 export class UserPagesModule { }

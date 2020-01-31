@@ -14,6 +14,7 @@
       <div class="col-md-12">
         <div class="box box-info">
             <div class="box-body">
+                
                 <div class="ui-g">
                     <div class="ui-g-6">
                         <div class="ui-g-4">
@@ -36,7 +37,7 @@
                             <b>Working Time</b>
                         </div>
                         <div class="ui-g-8">
-                            {{pack.amountOfTime}}
+                            {{pack.amountOfTime}} minutes
                         </div>
                     </div>
                     <div class="ui-g-6">
@@ -73,8 +74,11 @@
                         </ng-template>
                     </p-table>
                     <div class="ui-g-12" style="text-align: right;">
-                        <a type="button" pButton icon="pi pi-check" onclick="return confirm('are you sure?')" (click)="pickQuestion()" href="admin-page/package" label="Save"></a>
+                        <a type="button" pButton icon="pi pi-check" (click)="pickQuestion()" label="Save"></a>
                     </div>
+                    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+                    <p-messages [value]="msgs"></p-messages>
+
                 </p-fieldset>
             </div>
         </div>

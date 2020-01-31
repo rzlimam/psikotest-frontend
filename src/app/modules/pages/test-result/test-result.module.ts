@@ -23,6 +23,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
+import {ToastModule} from 'primeng/toast';
+
 
 @NgModule({
   declarations: [TestresultListComponent, TestresultStatComponent],
@@ -46,7 +48,8 @@ import {DropdownModule} from 'primeng/dropdown';
     FieldsetModule,
     ProgressSpinnerModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule
   ]
 })
 export class TestResultModule { }

@@ -6,13 +6,22 @@ import { QuestionService } from 'src/app/common/services/question.service';
 import { Questions } from 'src/app/common/model/Question';
 import { PackageService } from 'src/app/common/services/package.service';
 import { Package } from 'src/app/common/model/Package';
+import {ConfirmationService} from 'primeng/api';
+import {Message} from 'primeng/api';
 
 @Component({
   selector: 'app-detail-package-add',
   templateUrl: './detail-package-add.component.html',
-  styleUrls: ['./detail-package-add.component.scss']
+  styleUrls: ['./detail-package-add.component.scss'],
+  styles: [`
+        :host ::ng-deep button {
+            margin-right: .25em;
+        }
+    `],
+  providers: [ConfirmationService]
 })
 export class DetailPackageAddComponent implements OnInit {
+  msgs: Message[] = [];
   details:any;
   detail:any = new PackagDetail(null, null, null);
   pack:any = new Package(null, null, null, null, null, null, null);
@@ -23,7 +32,7 @@ export class DetailPackageAddComponent implements OnInit {
   idQT:any;
 
   constructor(private srv:PackageDetailService, private srv3:PackageService, private route:ActivatedRoute, 
-    private srv2:QuestionService, private router:Router) { }
+    private srv2:QuestionService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     let resp = this.srv.getAllPackageDetail();
@@ -41,18 +50,28 @@ export class DetailPackageAddComponent implements OnInit {
     ];
   }
   pickQuestion(){
-    console.log(this.selectedQuestion);
-    let b = [];
-    for(let i in this.selectedQuestion){
-      let c:any = new PackagDetail(null, null, null);
-      c.packages = this.pack;
-      c.question = this.selectedQuestion[i];
-      b.push(c);
-      
+    this.confirmationService.confirm({
+      message: 'Are you sure?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        console.log(this.selectedQuestion);
+        let b = [];
+        for(let i in this.selectedQuestion){
+          let c:any = new PackagDetail(null, null, null);
+          c.packages = this.pack;
+          c.question = this.selectedQuestion[i];
+          b.push(c); 
+        }
+        console.log(JSON.stringify(b));
+        this.srv.addPackDetail(b).subscribe(data=>console.log(data), error=>console.log(error));
+        this.msgs = [{severity: 'info', summary: 'Confirmed', detail: 'Berhasil'}];
+        this.reload();
+      }
+    });
     }
-    console.log(JSON.stringify(b));
-    
-    this.srv.addPackDetail(b).subscribe(data=>console.log(data), error=>console.log(error));
-  }
+    reload(){
+      location.href = "admin-page/package"
+    }
 
 }

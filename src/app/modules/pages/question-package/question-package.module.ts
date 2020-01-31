@@ -9,6 +9,7 @@ import { QuestionPackageRoutingModule } from './question-package-routing.module'
 import { QuestionPackageListComponent } from './question-package-list/question-package-list.component';
 import { DetailPackageAddComponent } from './detail-package-add/detail-package-add.component';
 import { DetailPackageUpdateComponent } from './detail-package-update/detail-package-update.component';
+import { AssignedQuestionListComponent } from './assigned-question-list/assigned-question-list.component';
 
 //primeNG
 import {TableModule} from 'primeng/table';
@@ -27,7 +28,11 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
-import { AssignedQuestionListComponent } from './assigned-question-list/assigned-question-list.component';
+import {ToastModule} from 'primeng/toast';
+import {MessagesModule} from 'primeng/messages';
+
+
+
 
 @NgModule({
   declarations: [QuestionPackageListComponent, DetailPackageAddComponent, DetailPackageUpdateComponent, AssignedQuestionListComponent],
@@ -51,7 +56,9 @@ import { AssignedQuestionListComponent } from './assigned-question-list/assigned
     FieldsetModule,
     ProgressSpinnerModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule,
+    MessagesModule
   ]
 })
 export class QuestionPackageModule { }

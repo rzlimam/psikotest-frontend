@@ -1,22 +1,25 @@
+//angular module
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
+//component & load module
 import {PagesRoutingModule} from './pages-routing.module';
 import {PagesComponent} from './pages/pages.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
 import {LayoutModule} from '../layout/layout.module';
-import {ButtonModule} from 'primeng/button';
-import {DropdownModule} from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms';
-import {TableModule} from 'primeng/table';
-import {CardModule} from 'primeng/card';
 import { CandidateComponent } from './candidate/candidate.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
 import { QuestionpackageComponent } from './questionpackage/questionpackage.component';
 import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
+
+//primeNG module
+import {TableModule} from 'primeng/table';
+import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {EditorModule} from 'primeng/editor';
 import {InputTextareaModule} from 'primeng/inputtextarea';
@@ -28,7 +31,10 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {TabViewModule} from 'primeng/tabview';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {FieldsetModule} from 'primeng/fieldset';
-import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 
 @NgModule({
@@ -53,7 +59,8 @@ import { AddPackageDetailComponent } from './questionpackage/add-package-detail/
     ConfirmDialogModule,
     TabViewModule,
     MultiSelectModule,
-    FieldsetModule
+    FieldsetModule,
+    ProgressSpinnerModule
     ]
 })
 export class PagesModule {

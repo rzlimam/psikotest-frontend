@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PackageDetailService } from 'src/app/common/services/package-detail.service';
 import { PackagDetail } from 'src/app/common/model/PackageDetail';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-add-package-detail',
@@ -23,6 +24,18 @@ export class AddPackageDetailComponent implements OnInit {
       {field : 'question.questionType.questionTypeTitle', header : 'Question Type'},
       {field : 'question.dateOfQuestion', header : 'Question Date'}
     ];
+  }
+  pickQuestion(){
+    console.log(this.detail);
+    let b = [];
+    for(let i in this.detail.question){
+      let c:any = new PackagDetail(null, null, null);
+      c.package = this.detail.package;
+      c.question = this.detail.question[i];
+      let d = b.push(c);
+    }
+    console.log(b)
+    this.srv.addPackDetail(b).subscribe(data=>console.log(data), error=>console.log(error));
   }
 
 }

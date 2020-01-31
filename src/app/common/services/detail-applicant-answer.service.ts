@@ -5,9 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DetailApplicantAnswerService {
-  private apiURL = 'http://localhost:8080';
+  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
   constructor(private http: HttpClient) { }
   public getAllDetailApplicantAnswer() {
     return this.http.get(this.apiURL + '/daa');
+  }
+  public getByHAA(id){
+    return this.http.get(this.apiURL + '/daa/haa/' + id);
   }
 }

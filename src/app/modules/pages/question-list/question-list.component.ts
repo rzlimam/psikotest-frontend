@@ -72,10 +72,9 @@ export class QuestionListComponent implements OnInit {
     this.display = true;
   }
   saveQuestion(){
-    if (this.newQuestion){
-      this.srv.addQuestion(this.question).subscribe(data=>console.log(data), error=>console.log(error));
-    }
-    this.display = false;
+    console.log(this.question);
+    this.srv.addQuestion(this.question).subscribe(data=>console.log(data), error=>console.log(error));
+    // this.display = false;
   }
   deleteQuestion(id){
     this.srv.deleteById(id).subscribe(data=>console.log(data), error=>console.log(error)); 

@@ -18,11 +18,10 @@ const routes: Routes = [
         {path: '', component: DashBoardComponent},
         {path: 'candidates', component: CandidateComponent},
         {path: 'question-list', component: QuestionListComponent},
-        {path: 'question-package', component: QuestionpackageComponent},
-        {path: 'question-package/add-detail', component: AddPackageDetailComponent},
         {path: 'question-type', component: QuestiontypeComponent},
-        {path: 'test-result', component: ResultTestComponent},
         {path: 'users', component: UserComponent},
+        {path: 'package', loadChildren: () => import('./question-package/question-package.module').then(m=>m.QuestionPackageModule)},
+        {path: 'result', loadChildren: () =>import('./test-result/test-result.module').then(m=>m.TestResultModule)}
     ]
   }
 ];

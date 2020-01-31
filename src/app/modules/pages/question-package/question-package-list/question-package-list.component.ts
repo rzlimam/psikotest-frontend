@@ -7,13 +7,18 @@ import { SelectItem } from 'primeng/api/selectitem';
 import { __assign } from 'tslib';
 import { PackageDetailService } from 'src/app/common/services/package-detail.service';
 import { PackagDetail } from 'src/app/common/model/PackageDetail';
+import { QuestionTypeService } from 'src/app/common/services/question-type.service';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-questionpackage',
-  templateUrl: './questionpackage.component.html',
-  styleUrls: ['./questionpackage.component.scss']
+  selector: 'app-question-package-list',
+  templateUrl: './question-package-list.component.html',
+  styleUrls: ['./question-package-list.component.scss']
 })
-export class QuestionpackageComponent implements OnInit {
+export class QuestionPackageListComponent implements OnInit {
+
   qPackage:any;
+  qPackages:any;
+  qType:any;
   selectedPackage: string[] = [];
   items: SelectItem[];
   candidate:any;
@@ -28,16 +33,26 @@ export class QuestionpackageComponent implements OnInit {
   detail:any = new PackagDetail(null, null, null);
   id:any;
 
-  constructor(private srv3:PackageService, private srv4:ProfileService, private srv:PackageDetailService) { }
+  constructor(private srv3:PackageService, private srv4:ProfileService, private srv:PackageDetailService,
+    private srv2:QuestionTypeService, private router:Router) { }
   ngOnInit() {
     let resp = this.srv4.getProfileList();
     resp.subscribe((data)=> this.candidate=data);
+
     let resp2 = this.srv3.getAllPackage();
     resp2.subscribe(res => {this.qPackage= res});
+
+    let resp3 = this.srv2.getAllQuestionType();
+    resp3.subscribe(res => {this.qType = res});
+
+    let resp4 = this.srv3.getAll();
+    resp4.subscribe(res => {this.qPackages = res});
+
     this.items = [];
     for (let i = 0; i < 10000; i++) {
       this.items.push({label:'Item ' + i, value: 'Item ' + i});
     }
+    
   }
   findbyid(id) {
     this.display4 = true;
@@ -78,6 +93,7 @@ export class QuestionpackageComponent implements OnInit {
     this.assignDsp = false;
   }
   savePackage() {
+    console.log(this.p);
     this.p.isActive = "true";
     this.srv3.addPackage(this.p).subscribe(data => console.log(data), error => console.log(error));
     this.display3 = false;
@@ -103,6 +119,9 @@ export class QuestionpackageComponent implements OnInit {
     this.srv.findDetailByIdPack(id).subscribe(data=>{
       this.detail = data;
     })
-}
+  }
+  addDetailPackage(id){
+    this.router.navigateByUrl('admin-page/package/add-detail/'+id);
+  }
 
 }

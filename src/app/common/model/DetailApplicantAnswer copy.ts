@@ -7,6 +7,13 @@ export class DetailApplicantAnswer {
     detailAnswerId: string;
     headerApplicantAnswer: HeaderApplicantAnswer;
     applicantAnswer: ApplicantAnswer;
-    packageDetail: PackagDetail;
+    packageQuestion: PackagDetail;
     point: number;
+    constructor(
+        detailAnswerId: any,
+        headerApplicantAnswer: HeaderApplicantAnswer,
+        applicantAnswer: ApplicantAnswer,
+        packageQuestion: PackagDetail,
+        point: any
+    ){}
 }

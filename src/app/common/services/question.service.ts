@@ -17,4 +17,7 @@ export class QuestionService {
   public deleteById(id){
     return this.http.delete(this.apiURL+'/question/'+id);
   }
+  public getByQType(id){
+    return this.http.get(this.apiURL+'/question/questiontype/'+id);
+  }
 }

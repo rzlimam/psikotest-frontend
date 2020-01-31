@@ -11,7 +11,7 @@ export class User {
         userId: any,
         password: any,
         role: any,
-        profile: any,
+        profile: Profile,
         isActive: any
     ){}
 }

@@ -24,6 +24,7 @@
                         <th>Address</th>
                         <th>Phone</th>
                         <th>Email</th>
+                        <th>Applied Position</th>
                         <th style="width: 4em;"></th>
                     </tr>
                 </ng-template>
@@ -34,6 +35,7 @@
                         <td>{{row.profile?.address}}</td>
                         <td>{{row.profile?.phone}}</td>
                         <td>{{row.profile?.email}}</td>
+                        <td>{{row.profile?.appliedPosition}}</td>
                         <td>
                           <button pButton type="button" (click)="showDialogCandidate()" icon="pi pi-search" class="ui-button-rounded ui-button-info"></button>
                         </td>

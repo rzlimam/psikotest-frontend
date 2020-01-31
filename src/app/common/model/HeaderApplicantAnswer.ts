@@ -1,8 +1,13 @@
 import { User } from './User';
+import { DetailApplicantAnswer } from './DetailApplicantAnswer copy';
 
 export class HeaderApplicantAnswer {
-    applicantAnswerId: string;
-    user: User;
-    dateOfAnswer: Date;
-    totalPoint: number;
+    constructor(
+        applicantAnswerId: any,
+        user: User,
+        dateOfAnswer: any,
+        totalPoint: any,
+        status: any,
+        detailAnswer: DetailApplicantAnswer
+    ){}
 }

@@ -1,0 +1,38 @@
+<section class="content-header">
+    <h1>
+      Assigned Questions
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Question Packages</a></li>
+        <li class="active">Assigned Question</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-body">
+                    <p-table [value]="qAssign">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Candidate Name</th>
+                                <th>Applied Position</th>
+                                <th>Question Package</th>
+                                <th>Question Type</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-ass>
+                            <tr>
+                                <td>{{ass.user?.profile?.profileName}}</td>
+                                <td>{{ass.user?.profile?.appliedPosition}}</td>
+                                <td>{{ass.packagee?.packageName}}</td>
+                                <td>{{ass.packagee?.questionType?.questionTypeTitle}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

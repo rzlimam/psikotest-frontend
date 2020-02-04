@@ -15,4 +15,7 @@ export class HeaderApplicantAnswerService {
   public getHeaderById(id){
     return this.http.get(this.apiURL + '/haa/' +id);
   }
+  public addApplicantAnswer(head:object){
+    return this.http.post(this.apiURL + '/haa', head);
+  }
 }

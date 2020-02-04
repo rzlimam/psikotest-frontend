@@ -11,7 +11,7 @@ import { DetailApplicantAnswer } from 'src/app/common/model/DetailApplicantAnswe
 })
 export class TestresultListComponent implements OnInit {
   result: any =  new HeaderApplicantAnswer(null, null, null, null, null, null);
-  det: any = new DetailApplicantAnswer(null, null, null, null, null);
+  det: any = new DetailApplicantAnswer();
   data: any;
   display: boolean;
   detailAns: boolean;

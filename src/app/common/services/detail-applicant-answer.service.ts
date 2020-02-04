@@ -13,4 +13,7 @@ export class DetailApplicantAnswerService {
   public getByHAA(id){
     return this.http.get(this.apiURL + '/daa/haa/' + id);
   }
+  public submitAnswer(id, appAnswer){
+    return this.http.post(this.apiURL + '/daa/insert/' +id, appAnswer)
+  }
 }

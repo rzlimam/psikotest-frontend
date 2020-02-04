@@ -17,16 +17,14 @@
                       <a class="btn btn-primary btn-flat" href="#"><i class="fa fa-sign-out"></i> Sign out</a>
                     </div>
                   </li>
-                  <li>
-                    
+                  <li> 
                   </li>
                 </ul>
               </div>
             </nav>
           </header>
-    
-   
     <div class="content-wrapper">
+        <div class="container">
             <section class="content-header">
                 <h1>
                   Hello, {{canName}} !!!
@@ -35,19 +33,25 @@
                 <ol class="breadcrumb">
                   Start Test
                 </ol>
-              </section>
-              <section class="content">
+            </section>
+            <section class="content">
                 <div class="row" [hidden] = "!isShowInstruction">
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div *ngFor="let item of pakets; let i = index">
                             <div class="box-body" [hidden] = "i !== indeksPaket">
-                                <h3><b>{{item.packages.packageName}}</b></h3>
-                                <hr>
-                                <br>
-                                {{item.packages.description}}
+                                <div style="text-align: center;">
+                                    <h3>Paket Soal : <strong>{{item.packages.packageName}}</strong></h3>
+                                    <br>
+                                    <small>Deskripsi:</small>
+                                    <p-card>{{item.packages.description}}</p-card>
+                                </div>
+                                
                                 <div class="box-footer">
-                                    <button pButton type="button" (click)="grabQuestion(i)" label="Lanjutkan" class="ui-button-rounded"></button>
+                                    <div style="text-align: center;">
+                                        <button pButton type="button" (click)="grabQuestion(i)" label="Lanjutkan" class="ui-button-rounded"></button>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -75,7 +79,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          <input type="radio" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceA}}">
                                                           {{pak.question.data.choiceA}}
                                                         </label>
                                                     </div>
@@ -83,7 +87,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          <input type="radio" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceB}}">
                                                           {{pak.question.data.choiceB}}
                                                         </label>
                                                     </div>
@@ -91,7 +95,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          <input type="radio" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceC}}">
                                                           {{pak.question.data.choiceC}}
                                                         </label>
                                                     </div>
@@ -99,7 +103,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          <input type="radio" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceD}}">
                                                           {{pak.question.data.choiceD}}
                                                         </label>
                                                     </div>
@@ -111,24 +115,16 @@
                                         <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda 2'; else templateName6">
                                             <div class="ui-g">
                                                 <div class="ui-g-6">
-                                                    <label>
-                                                        <input type="checkbox">{{pak.question.data.choiceA}}
-                                                    </label>
+                                                    <input type="checkbox">{{pak.question.data.choiceA}}
                                                 </div>
                                                 <div class="ui-g-6">
-                                                    <label>
-                                                        <input type="checkbox">{{pak.question.data.choiceB}}
-                                                    </label>
+                                                    <input type="checkbox">{{pak.question.data.choiceB}}
                                                 </div>
                                                 <div class="ui-g-6">
-                                                    <label>
-                                                        <input type="checkbox">{{pak.question.data.choiceC}}
-                                                    </label>
+                                                    <input type="checkbox">{{pak.question.data.choiceC}}
                                                 </div>
                                                 <div class="ui-g-6">
-                                                    <label>
-                                                        <input type="checkbox">{{pak.question.data.choiceD}}
-                                                    </label>
+                                                    <input type="checkbox">{{pak.question.data.choiceD}}
                                                 </div>
                                             </div>
                                         </div>
@@ -165,12 +161,9 @@
                     </div>
                     <div class="col-md-4">
                         <div class="box box-info">
-                            <div class="box-header with-border">
-                              <h3 class="box-title">Blank Box</h3>
-                            </div>
                             <div class="box-body">
-                                <strong>Answered Question:</strong>
-                                <br>
+                                <p-card>
+                                    <strong>Jump to question:</strong>
                                 <table>
                                     <td>
                                         <div class="btn-group">
@@ -180,8 +173,8 @@
                                         </div>
                                     </td>
                                 </table>
-                                <hr>
-                                <strong>Question Package : </strong>?????
+                                </p-card>
+                                <br>
                                 <strong>Remaining Time   : </strong>?????
                             </div>
                             <!-- /.box-body -->
@@ -189,7 +182,9 @@
                     </div>
                 </div>
                 <!-- /.box -->
-              </section>
+            </section>
+        </div>
+            
     </div>
 </div>
 </body>

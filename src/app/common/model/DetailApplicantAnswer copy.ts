@@ -9,11 +9,12 @@ export class DetailApplicantAnswer {
     applicantAnswer: ApplicantAnswer;
     packageQuestion: PackagDetail;
     point: number;
-    constructor(
-        detailAnswerId: any,
-        headerApplicantAnswer: HeaderApplicantAnswer,
-        applicantAnswer: ApplicantAnswer,
-        packageQuestion: PackagDetail,
-        point: any
-    ){}
+    // constructor(
+    //     detailAnswerId: any,
+    //     headerApplicantAnswer: HeaderApplicantAnswer,
+    //     applicantAnswer: ApplicantAnswer,
+    //     packageQuestion: PackagDetail,
+    //     point: any
+    // ){
+    // }
 }

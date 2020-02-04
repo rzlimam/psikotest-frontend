@@ -9,5 +9,9 @@ export class PackagDetail {
         packageQuestionId: any,
         packages: any,
         question: any,
-    ){}
+    ){
+        this.packageQuestionId = packageQuestionId;
+        this.packages = packages;
+        this.question = question;
+    }
 }

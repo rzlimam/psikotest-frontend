@@ -28,6 +28,7 @@ export class QuestionPackageListComponent implements OnInit {
   display3:boolean;
   display4:boolean;
   assignDsp:boolean;
+  displayDet: boolean;
   displayUpdate: boolean;
   p: any = new Package(null, null, null, null, null, null,null);
   detail:any = new PackagDetail(null, null, null);
@@ -81,10 +82,10 @@ export class QuestionPackageListComponent implements OnInit {
   saveAssign(){
     console.log(this.assign);
     let b = [];
-    for(let i in this.assign.packagee){
+    for(let i in this.assign.packages){
       let c:any = new QuestionAssign(null, null, null);
       c.user = this.assign.user;
-      c.packagee = this.assign.packagee[i];
+      c.packages = this.assign.packages[i];
       let d = b.push(c);
     }
     console.log(b)
@@ -122,6 +123,15 @@ export class QuestionPackageListComponent implements OnInit {
   }
   addDetailPackage(id){
     this.router.navigateByUrl('admin-page/package/add-detail/'+id);
+  }
+
+  findDetailByPackId(idpack) {
+    this.display4 = true;
+    console.log(idpack)
+    console.log(this.detail);
+    this.srv.findDetailByIdPack(idpack).subscribe(data => {
+      this.detail = data; console.log(this.detail);
+    })
   }
 
 }

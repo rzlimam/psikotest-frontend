@@ -4,6 +4,7 @@ import { LayoutingComponent } from './layouting/layouting.component';
 import { DescriptionTestComponent } from './description-test/description-test.component';
 import { FinishTestComponent } from './finish-test/finish-test.component';
 import { StartTestComponent } from './start-test/start-test.component';
+import { PackageDescriptionComponent } from './package-description/package-description.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     path: '', component: LayoutingComponent,
       children: [
         {path: '', component: DescriptionTestComponent},
+        {path: 'package-desc', component: PackageDescriptionComponent},
         {path: 'start-test', component: StartTestComponent},
         {path: 'finish-test', component: FinishTestComponent}
       ]

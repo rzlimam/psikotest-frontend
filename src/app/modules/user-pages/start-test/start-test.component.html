@@ -29,7 +29,7 @@
     <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                  Top Navigation
+                  {{canName}}
                   <small>Example 2.0</small>
                 </h1>
                 <ol class="breadcrumb">
@@ -43,45 +43,68 @@
                     <div class="col-md-8">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                              <h3 class="box-title">Blank Box</h3>
+                              <h3 class="box-title">{{paket.packageName}}</h3>
                             </div>
-                            <div class="box-body">
-                                <strong> Question:</strong>
-                                <p-card>
-                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                                        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                        nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                                        labore sustainable VHS.
-                                    </p>
-                                </p-card>
-                                <br>
-                                <strong> Your Answer:</strong>
-                                <div class="ui-g">
-                                    <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 1"></p-radioButton></p-card></div>
-                                    <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 2"></p-radioButton></p-card></div>
-                                    <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 3"></p-radioButton></p-card></div>
-                                    <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 4"></p-radioButton></p-card></div>
-                                </div>
-
-                            </div>
+                            <div *ngFor="let pak of paket.packageDetails; let i = index">
+                            <div class="box-body" [hidden] = "i !== indeks">
+                                    <strong> Question:</strong>
+                                    <p-card>
+                                        <p>{{pak.question.data.question}}
+                                        </p>
+                                    </p-card>
+                                    <br>
+                                    <strong> Your Answer:</strong>
+                                    <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda'; else templateName5">
+                                        <div class="form-group">
+                                            <div class="ui-g">
+                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" [(ngModel)]="selectedValue" label="Option 1"></p-radioButton></p-card></div>
+                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 2" [(ngModel)]="selectedValue" label="Option 2"></p-radioButton></p-card></div>
+                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 3" [(ngModel)]="selectedValue" label="Option 3"></p-radioButton></p-card></div>
+                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 4" [(ngModel)]="selectedValue" label="Option 4"></p-radioButton></p-card></div>
+                                                Selected Value = {{selectedValue||'none'}}
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <ng-template #templateName5>
+                                        <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda 2'; else templateName6">
+                                            <div class="ui-g">
+                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 1"></p-radioButton></p-card></div>
+                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 2"></p-radioButton></p-card></div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template #templateName6>
+                                        <div class="ui-g">
+                                            <textarea></textarea>
+                                        </div>
+                                    </ng-template>
+                                    
+                                    
+                            
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="pull-right">
-                                            <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-backward"></i> Prev</button>
+                                        <div class="pull-right" [hidden] = "i == 0">
+                                            <button type="button" class="btn btn-sm btn-primary" (click)="prevQuest(i)"><i class="fa fa-backward"></i> Prev</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="pull-left">
-                                            <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-forward"></i> Next</button>
+                                            <div *ngIf="i+1 == paket.packageDetails.length; else templateName4">
+                                                <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Submit</button>
+                                            </div>
+                                            <ng-template #templateName4>
+                                                <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Next</button>
+                                            </ng-template>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -94,27 +117,10 @@
                                 <br>
                                 <table>
                                     <td>
-                                        <div class="btn-group-vertical">
-                                            <button pButton type="button" label=" 1" class="ui-button-rounded ui-button-secondary"></button>
-                                            <button pButton type="button" label=" 2" class="ui-button-rounded ui-button-secondary"></button>
-                                            <button pButton type="button" label=" 3" class="ui-button-rounded ui-button-secondary"></button>
-                                            <button pButton type="button" label=" 4" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label=" 5" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label=" 6" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label=" 7" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label=" 8" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label=" 9" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="10" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="11" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="12" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="13" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="14" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="15" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="16" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="17" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="18" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="19" class="ui-button-rounded ui-button-success"></button>
-                                            <button pButton type="button" label="20" class="ui-button-rounded ui-button-success"></button>
+                                        <div class="btn-group">
+                                            <button type="button" (click)="numberQuestion(i)" *ngFor="let item of paket.packageDetails; let i = index" class="btn btn-primary">
+                                                {{i+1}}
+                                            </button>
                                         </div>
                                     </td>
                                 </table>
@@ -131,72 +137,3 @@
     </div>
 </div>
 </body>
-
-
-    
- 
-<!-- <div class="ui-g">
-        <div class="ui-g-12 ui-md-2">
-            <p-card>
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Consectetur adipiscing elit</li>
-                    <li>Integer molestie lorem at massa</li>
-                    <li>Facilisis in pretium nisl aliquet</li>
-                    <li>Nulla volutpat aliquam velit</li>
-                    <li>Faucibus porta lacus fringilla vel</li>
-                    <li>Aenean sit amet erat nunc</li>
-                    <li>Eget porttitor lorem</li>
-            </p-card>
-        </div>
-        <div class="ui-g-12 ui-md-10 ui-g-nopad">
-            <div class="ui-g-12">
-                <p-card>
-                    Header
-                </p-card>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-                <div class="ui-g">
-                    <div class="ui-g-12 ui-md-8">
-                        <p-card>
-                            <div class="ui-g">
-                                <div class="ui-g-12">
-                                    <p-card>
-                                        Soal : 
-                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                                            wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                            assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                            farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                                            labore sustainable VHS.</p>
-                                    </p-card>
-                                </div>
-                                <div class="ui-g-12">
-                                    <p-card>
-                                        Jawaban : 
-                                        <div class="ui-g">
-                                            <div class="ui-g-6">A. Abu Bakar</div>
-                                            <div class="ui-g-6">C. Umar bin Khattab</div>
-                                            <div class="ui-g-6">B. Utsman bin Affan</div>
-                                            <div class="ui-g-6">D. Ali bin Abi Thalib</div>
-                                        </div>
-                                    </p-card>
-                                </div>
-                            </div>
-
-                        </p-card>
-                    </div>
-                    <div class="ui-g-12 ui-md-4">
-                        <p-card>
-                            Soal yang dikerjakan
-                        </p-card>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui-g-12">
-            <p-card>
-                Footer
-            </p-card>
-        </div>
-    </div> -->

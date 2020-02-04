@@ -1,0 +1,56 @@
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
+                <!-- Logo -->
+                <a class="logo" href="#">
+                  <!-- logo for regular state and mobile devices -->
+                  <span class="logo-lg"><img src="assets/dist/img/lwcn-logo.png" style="width: 400px;height: 41px;"></span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                
+                  <!-- Sidebar toggle button-->
+                  <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <div class="pull-right" style="padding: 0.5em;">
+                          <a class="btn btn-primary btn-flat" href="#"><i class="fa fa-sign-out"></i> Sign out</a>
+                        </div>
+                      </li>
+                      <li>
+                        
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </header>
+
+              <div class="content-wrapper">
+                <section class="content-header">
+                    <h1>
+                      Hello, {{canName}} !
+                    </h1>
+                    <ol class="breadcrumb">
+                      Package Description
+                    </ol>
+                  </section>
+                  <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <h3><b>Ini Judul Paket</b></h3>
+                                    <hr>
+                                    <br>
+                                    Ini Deskripsi Paket
+                                </div>
+                                <div class="box-footer">
+                                    <button pButton type="button" (click)="getQuestion()" label="Lanjutkan" class="ui-button-rounded"></button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box -->
+                  </section>
+        </div>

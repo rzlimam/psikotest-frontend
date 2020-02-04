@@ -27,6 +27,7 @@ export class DetailPackageAddComponent implements OnInit {
   pack:any = new Package(null, null, null, null, null, null, null);
   question:any = new Questions(null, null, null, null, null, null, null, null);
   cols:any[];
+  viewQues : boolean;
   selectedQuestion: PackagDetail;
   id:any;
   idQT:any;
@@ -72,6 +73,14 @@ export class DetailPackageAddComponent implements OnInit {
     }
     reload(){
       location.href = "admin-page/package"
+    }
+    viewQuestion(id) {
+      console.log("saa" + id);
+      this.viewQues = true;
+      this.srv2.getQuestionById(id).subscribe(data => {
+        console.log("sas" + data);
+        this.question = data;
+      })
     }
 
 }

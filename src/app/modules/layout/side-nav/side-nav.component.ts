@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { GlobalService } from 'src/app/common/services/global.service';
 
 declare var $;
 
@@ -8,8 +9,9 @@ declare var $;
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
-
-  constructor() {
+  fullname:any;
+  constructor(private srv:GlobalService) {
+    this.fullname = srv.getName();
   }
 
   ngOnInit() {
@@ -17,5 +19,6 @@ export class SideNavComponent implements OnInit {
       $('.sidebar-menu').tree();
     });
   }
+  
 
 }

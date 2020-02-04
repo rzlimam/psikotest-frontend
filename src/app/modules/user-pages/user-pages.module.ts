@@ -14,12 +14,14 @@ import { StartTestComponent } from './start-test/start-test.component';
 import {CardModule} from 'primeng/card';
 import { UserLayoutModule } from '../user-layout/user-layout.module';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { FormsModule } from '@angular/forms';
+import { PackageDescriptionComponent } from './package-description/package-description.component';
 
 
 
 
 @NgModule({
-  declarations: [DescriptionTestComponent, FinishTestComponent, LayoutingComponent, StartTestComponent],
+  declarations: [DescriptionTestComponent, FinishTestComponent, LayoutingComponent, StartTestComponent, PackageDescriptionComponent],
   imports: [
     CommonModule,
     UserPagesRoutingModule,
@@ -30,7 +32,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     ButtonModule,
     CardModule,
     UserLayoutModule,
-    RadioButtonModule
+    RadioButtonModule,
+    FormsModule
+
   ]
 })
 export class UserPagesModule { }

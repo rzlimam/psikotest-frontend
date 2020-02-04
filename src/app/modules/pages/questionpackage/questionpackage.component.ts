@@ -66,10 +66,10 @@ export class QuestionpackageComponent implements OnInit {
   saveAssign(){
     console.log(this.assign);
     let b = [];
-    for(let i in this.assign.packagee){
+    for(let i in this.assign.packages){
       let c:any = new QuestionAssign(null, null, null);
       c.user = this.assign.user;
-      c.packagee = this.assign.packagee[i];
+      c.packages = this.assign.packages[i];
       let d = b.push(c);
     }
     console.log(b)

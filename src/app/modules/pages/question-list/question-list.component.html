@@ -50,7 +50,7 @@
                           <td>{{rowData.questionType?.questionTypeTitle}}</td>
                           <td>{{rowData.data?.question}}</td>
                           <td style="text-align: center;">
-                            <button pButton type="button" (click)="showDialog()" icon="pi pi-pencil" class="ui-button-info"></button> | 
+                            <button pButton type="button" (click)="updateQuest(rowData.questionId)" icon="pi pi-pencil" class="ui-button-info"></button>
                             <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
                             <button pButton type="button" (click)="deleteQuestion(rowData.questionId)" icon="pi pi-trash" class="ui-button-danger"></button>
                           </td>
@@ -199,6 +199,99 @@
                 </p-tabView>
 
                   
+                </p-dialog>
+
+                <p-dialog header="Edit Question" [(visible)]="displayUpd" [modal]="true" [style]="{width: '50vw'}"
+        [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+        <p-tabView>
+          <p-tabPanel header="Text" leftIcon="fa fa-file-text">
+            <form>
+              <div class="form-group">
+                <label>Question Title</label>
+                <input id="input" type="text" name="title" [(ngModel)]="question.questionTitle" class="form-control"
+                  size="30">
+              </div>
+              <div class="form-group">
+                <label>Question Type</label>
+                <div class="ui-g">
+                  <p-dropdown [options]="qType" name="qType" [style]="{'width':'600px'}"
+                    [(ngModel)]="question.questionType" placeholder="Select Question Type"
+                    optionLabel="questionTypeTitle"></p-dropdown>
+                </div>
+                <!-- <p>ini {{question?.questionType?.questionTypeTitle}}</p> -->
+              </div>
+              <div class="form-group">
+                <label>Question</label>
+                <textarea name="question" class="form-control" [(ngModel)]="question.data.question" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Answer Choices</label>
+                <div class="ui-g">
+                  <div class="ui-g-6">
+                    <span class="ui-float-label">
+                      <input id="float-input" name="choiceA" type="text" [(ngModel)]="question.data.choiceA" size="30"
+                        pInputText>
+                      <label for="float-input">Choice A</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-6">
+                    <span class="ui-float-label">
+                      <input id="float-input" name="choiceC" type="text" [(ngModel)]="question.data.choiceC" size="30"
+                        pInputText>
+                      <label for="float-input">Choice C</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-6">
+                    <span class="ui-float-label">
+                      <input id="float-input" name="choiceB" type="text" [(ngModel)]="question.data.choiceB" size="30"
+                        pInputText>
+                      <label for="float-input">Choice B</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-6">
+                    <span class="ui-float-label">
+                      <input id="float-input" name="choiceD" type="text" [(ngModel)]="question.data.choiceD" size="30"
+                        pInputText>
+                      <label for="float-input">Choice D</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Correct Answer</label>
+                <div class="ui-g">
+                  <div class="ui-g-6">
+                    <span class="ui-float-label">
+                      <input id="float-input" name="validAnswer1" type="text" [(ngModel)]="question.answer.validAnswer1"
+                        size="30" pInputText>
+                      <label for="float-input">Valid Answer 1</label>
+                    </span>
+                  </div>
+                  <div class="ui-g-6">
+                    <span class="ui-float-label">
+                      <input id="float-input" name="validAnswer2" type="text" [(ngModel)]="question.answer.validAnswer2"
+                        size="30" pInputText>
+                      <label for="float-input">Valid Answer 2</label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <p-footer>
+              <a type="button" pButton icon="pi pi-check" onclick="return confirm('Are you sure?')"
+                (click)="updateQuestion(question.questionId)" href="admin-page/question-list" label="Save"></a>
+            </p-footer>
+          </p-tabPanel>
+          <p-tabPanel header="Images" leftIcon="fa fa-image">
+            Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather parallels
+            the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of
+            the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for
+            America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for
+            his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his
+            customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+          </p-tabPanel>
+
+        </p-tabView>
                 </p-dialog>
               </div>
               <!-- /.tab-pane -->

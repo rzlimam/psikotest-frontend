@@ -10,4 +10,7 @@ export class QuestionAssignService {
   public getAllQuestionAssign() {
     return this.http.get(this.apiURL + '/questionassign');
   }
+  public findByUser(id){
+    return this.http.get(this.apiURL + '/questionassign/user/' + id);
+  }
 }

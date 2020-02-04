@@ -20,4 +20,10 @@ export class QuestionService {
   public getByQType(id){
     return this.http.get(this.apiURL+'/question/questiontype/'+id);
   }
+  public getQuestionById(id){
+    return this.http.get(this.apiURL+'/question/'+id);
+  }
+  public updatequest(question: object) {
+    return this.http.put(this.apiURL + '/question', question);
+  }
 }

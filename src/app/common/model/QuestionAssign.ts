@@ -5,6 +5,6 @@ export class QuestionAssign{
     constructor(
         AssignQuestionId:any,
         user:User,
-        packagee:Package
+        packages:Package
     ){}
 }

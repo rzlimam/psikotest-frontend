@@ -42,6 +42,7 @@ export class QuestionListComponent implements OnInit {
   display: boolean = false;
   newQuestion:boolean;
   msgs: Message[]=[];
+  displayUpd: boolean = false;
 
 
   constructor(private srv:QuestionService, private srv2:QuestionTypeService, private confirmationService:ConfirmationService) { }
@@ -78,5 +79,18 @@ export class QuestionListComponent implements OnInit {
   }
   deleteQuestion(id){
     this.srv.deleteById(id).subscribe(data=>console.log(data), error=>console.log(error)); 
+  }
+  public updateQuest(id) {
+    this.displayUpd = true;
+    let resp = this.srv.getQuestionById(id);
+    return resp.subscribe((data) => this.question = data);
+  }
+
+  public updateQuestion(id) {
+    console.log(id);
+    console.log(this.question);
+    let respons = this.srv.updatequest(this.question);
+    respons.subscribe((data) => this.question = data);
+    this.displayUpd = false;
   }
 }

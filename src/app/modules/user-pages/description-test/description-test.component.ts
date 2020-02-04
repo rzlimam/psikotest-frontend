@@ -22,7 +22,7 @@ export class DescriptionTestComponent implements OnInit {
     this.srv.findByUser(this.userId).subscribe(data=>{this.assign = data; console.log(this.assign);
     localStorage.setItem('questionPackage', JSON.stringify(this.assign))
     });
-    this.router.navigateByUrl('user-page/package-desc')
+    this.router.navigateByUrl('user-page/start-test')
 
   }
 

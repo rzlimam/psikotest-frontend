@@ -71,6 +71,21 @@
       };
     }
   </script>
+  <script type="text/javascript">
+    function myFun(){
+      var a = document.getElementsByName('chk');
+      var newvar = 0;
+      var count;
+      for(count = 1; count < a.length; count++){
+        if(a[count].checked==true){
+          newvar = newvar + 1;
+        }
+      }
+      if(newvar>=3){
+        document.getElementById('notvalid').innerHTML="*Please select two"
+      }
+    }
+  </script>
 </body>
 
 </html>

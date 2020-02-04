@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { DashboardService } from 'src/app/common/services/dashboard.service';
 
 interface Book {
   name: string;
@@ -12,8 +13,9 @@ interface Book {
 })
 export class DashBoardComponent implements OnInit {
   data: any;
+  dashData: any;
 
-  constructor() {
+  constructor(private srv:DashboardService) {
     this.data = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
@@ -34,6 +36,8 @@ export class DashBoardComponent implements OnInit {
 }
 
   ngOnInit() {
+    let resp = this.srv.dashboardContent();
+    resp.subscribe(res=>{this.dashData = res});
   }
 
 }

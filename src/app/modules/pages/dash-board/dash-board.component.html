@@ -15,11 +15,11 @@
   <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-user-plus"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Peserta Lolos</span>
-          <span class="info-box-number">???</span>
+          <span class="info-box-number">{{dashData.totalPass}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -28,11 +28,11 @@
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+        <span class="info-box-icon bg-red"><i class="fa fa-user-times"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Peserta Tidak Lolos</span>
-          <span class="info-box-number">???</span>
+          <span class="info-box-number">{{dashData.totalFail}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -45,11 +45,11 @@
 
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+        <span class="info-box-icon bg-green"><i class="fa fa-newspaper-o"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Jumlah Soal</span>
-          <span class="info-box-number">???</span>
+          <span class="info-box-number">{{dashData.totalQuestion}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -58,11 +58,11 @@
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+        <span class="info-box-icon bg-yellow"><i class="fa fa-book"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Jumlah Paket Soal</span>
-          <span class="info-box-number">???</span>
+          <span class="info-box-number">{{dashData.totalPackage}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>

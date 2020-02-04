@@ -29,47 +29,107 @@
     <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                  {{canName}}
-                  <small>Example 2.0</small>
+                  Hello, {{canName}} !!!
+                  <small>Semangat ^^</small>
                 </h1>
                 <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                  <li><a href="#">Layout</a></li>
-                  <li class="active">Top Navigation</li>
+                  Start Test
                 </ol>
               </section>
               <section class="content">
-                <div class="row">
+                <div class="row" [hidden] = "!isShowInstruction">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div *ngFor="let item of pakets; let i = index">
+                            <div class="box-body" [hidden] = "i !== indeksPaket">
+                                <h3><b>{{item.packages.packageName}}</b></h3>
+                                <hr>
+                                <br>
+                                {{item.packages.description}}
+                                <div class="box-footer">
+                                    <button pButton type="button" (click)="grabQuestion(i)" label="Lanjutkan" class="ui-button-rounded"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>  
+                <div class="row" [hidden] = "!isShowQuestion">
                     <div class="col-md-8">
                         <div class="box box-primary">
                             <div class="box-header with-border">
                               <h3 class="box-title">{{paket.packageName}}</h3>
                             </div>
                             <div *ngFor="let pak of paket.packageDetails; let i = index">
-                            <div class="box-body" [hidden] = "i !== indeks">
-                                    <strong> Question:</strong>
-                                    <p-card>
-                                        <p>{{pak.question.data.question}}
-                                        </p>
-                                    </p-card>
+                            <div class="box-body" [hidden] = "i !== indeksQuestion">
+                                <strong> Question:</strong>
+                                <p-card>
+                                    <p>{{pak.question.data.question}}
+                                    </p>
+                                </p-card>
                                     <br>
                                     <strong> Your Answer:</strong>
                                     <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda'; else templateName5">
                                         <div class="form-group">
                                             <div class="ui-g">
-                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" [(ngModel)]="selectedValue" label="Option 1"></p-radioButton></p-card></div>
-                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 2" [(ngModel)]="selectedValue" label="Option 2"></p-radioButton></p-card></div>
-                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 3" [(ngModel)]="selectedValue" label="Option 3"></p-radioButton></p-card></div>
-                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 4" [(ngModel)]="selectedValue" label="Option 4"></p-radioButton></p-card></div>
-                                                Selected Value = {{selectedValue||'none'}}
+                                                <div class="ui-g-6">
+                                                    <div class="radio">
+                                                        <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          {{pak.question.data.choiceA}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g-6">
+                                                    <div class="radio">
+                                                        <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          {{pak.question.data.choiceB}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g-6">
+                                                    <div class="radio">
+                                                        <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          {{pak.question.data.choiceC}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g-6">
+                                                    <div class="radio">
+                                                        <label>
+                                                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          {{pak.question.data.choiceD}}
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div> 
                                         </div>
                                     </div>
                                     <ng-template #templateName5>
                                         <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda 2'; else templateName6">
                                             <div class="ui-g">
-                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 1"></p-radioButton></p-card></div>
-                                                <div class="ui-g-6"><p-card><p-radioButton name="group1" value="Option 1" label="Option 2"></p-radioButton></p-card></div>
+                                                <div class="ui-g-6">
+                                                    <label>
+                                                        <input type="checkbox">{{pak.question.data.choiceA}}
+                                                    </label>
+                                                </div>
+                                                <div class="ui-g-6">
+                                                    <label>
+                                                        <input type="checkbox">{{pak.question.data.choiceB}}
+                                                    </label>
+                                                </div>
+                                                <div class="ui-g-6">
+                                                    <label>
+                                                        <input type="checkbox">{{pak.question.data.choiceC}}
+                                                    </label>
+                                                </div>
+                                                <div class="ui-g-6">
+                                                    <label>
+                                                        <input type="checkbox">{{pak.question.data.choiceD}}
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </ng-template>
@@ -78,26 +138,22 @@
                                             <textarea></textarea>
                                         </div>
                                     </ng-template>
-                                    
-                                    
-                            
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="pull-right" [hidden] = "i == 0">
+                                        <div class="pull-right" [hidden] = "indeksQuestion == 0">
                                             <button type="button" class="btn btn-sm btn-primary" (click)="prevQuest(i)"><i class="fa fa-backward"></i> Prev</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="pull-left">
-                                            <div *ngIf="i+1 == paket.packageDetails.length; else templateName4">
-                                                <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Submit</button>
+                                            <div *ngIf="indeksQuestion+1 == paket.packageDetails.length; else templateName4">
+                                                <button type="button" class="btn btn-sm btn-primary" (click)="sumbitQuest()"><i class="fa fa-forward"></i> Submit</button>
                                             </div>
                                             <ng-template #templateName4>
                                                 <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Next</button>
                                             </ng-template>
-                                            
                                         </div>
                                     </div>
                                 </div>

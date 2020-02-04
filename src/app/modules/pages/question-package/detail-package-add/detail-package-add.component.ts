@@ -8,6 +8,7 @@ import { PackageService } from 'src/app/common/services/package.service';
 import { Package } from 'src/app/common/model/Package';
 import {ConfirmationService} from 'primeng/api';
 import {Message} from 'primeng/api';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detail-package-add',
@@ -33,7 +34,8 @@ export class DetailPackageAddComponent implements OnInit {
   idQT:any;
 
   constructor(private srv:PackageDetailService, private srv3:PackageService, private route:ActivatedRoute, 
-    private srv2:QuestionService, private confirmationService: ConfirmationService) { }
+    private srv2:QuestionService, private confirmationService: ConfirmationService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     let resp = this.srv.getAllPackageDetail();
@@ -67,9 +69,16 @@ export class DetailPackageAddComponent implements OnInit {
           b.push(c); 
         }
         console.log(JSON.stringify(b));
-        this.srv.addPackDetail(b).subscribe(data=>console.log(data), error=>console.log(error));
+        this.srv.addPackDetail(b).subscribe(data=>{
+          console.log(data),
+          this.toastrSuccess("pick question success"),
+          this.reload();
+        } , error=>{
+          console.log(error),
+          this.toastrFailed(error.error)
+        } );
         this.msgs = [{severity: 'info', summary: 'Confirmed', detail: 'Berhasil'}];
-        this.reload();
+        
       }
     });
     }
@@ -83,6 +92,16 @@ export class DetailPackageAddComponent implements OnInit {
         console.log("sas" + data);
         this.question = data;
       })
+    }
+
+    toastrSuccess(msg: any){
+      this.toastr.success(msg, "Success")
+    }
+  
+    toastrFailed(error: any){
+      this.toastr.error(error,"Failed", {
+        timeOut: 1000
+      });
     }
 
 }

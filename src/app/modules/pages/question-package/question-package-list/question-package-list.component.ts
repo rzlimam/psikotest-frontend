@@ -9,6 +9,7 @@ import { PackageDetailService } from 'src/app/common/services/package-detail.ser
 import { PackagDetail } from 'src/app/common/model/PackageDetail';
 import { QuestionTypeService } from 'src/app/common/services/question-type.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-question-package-list',
   templateUrl: './question-package-list.component.html',
@@ -35,7 +36,7 @@ export class QuestionPackageListComponent implements OnInit {
   id:any;
 
   constructor(private srv3:PackageService, private srv4:ProfileService, private srv:PackageDetailService,
-    private srv2:QuestionTypeService, private router:Router) { }
+    private srv2:QuestionTypeService, private router:Router, private toastr: ToastrService) { }
   ngOnInit() {
     let resp = this.srv4.getProfileList();
     resp.subscribe((data)=> this.candidate=data);
@@ -55,12 +56,19 @@ export class QuestionPackageListComponent implements OnInit {
     }
     
   }
+  
+  reload(){
+    let resp2 = this.srv3.getAllPackage();
+    resp2.subscribe(res => {this.qPackage= res});
+  }
+
   findbyid(id) {
     this.display4 = true;
     this.srv3.getById(id).subscribe(data => {
       this.p = data; this.findDetailByPackId(this.p.packageId)
     })
   }
+
   public updatePackage(id) {
     this.displayUpdate = true;
     let resp = this.srv3.getById(id);
@@ -90,14 +98,33 @@ export class QuestionPackageListComponent implements OnInit {
     }
     console.log(b)
     this.srv3.assignPackage(b)
-    .subscribe(data=>console.log(data), error=>console.log(error));
-    this.assignDsp = false;
+    .subscribe(data=>{
+      console.log(data),
+      this.toastrSuccess("question assigned"),
+      this.assignDsp = false;
+      location.href = "admin-page/package/assign-question";
+    } , error=>{
+      console.log(error),
+      this.toastrFailed(error.error),
+      this.assignDsp = true;
+    } );
+    
   }
   savePackage() {
     console.log(this.p);
     this.p.isActive = "true";
-    this.srv3.addPackage(this.p).subscribe(data => console.log(data), error => console.log(error));
-    this.display3 = false;
+    this.srv3.addPackage(this.p)
+    .subscribe(data =>{
+      console.log(data),
+      this.toastrSuccess("add package success"),
+      this.reload(),
+      this.display3 = false;
+    } , error =>{
+      console.log(error),
+      this.toastrFailed(error.error),
+      this.display3 = true;
+    } );
+    
   }
 
   updPackage() {
@@ -108,12 +135,27 @@ export class QuestionPackageListComponent implements OnInit {
   public update(id) {
     console.log(id);
     let respons = this.srv3.updPackage(this.p);
-    respons.subscribe((data) => this.p = data);
-    this.displayUpdate = false;
+    respons.subscribe((data) =>{
+      this.p = data,
+      this.toastrSuccess("update package success"),
+      this.reload(),
+      this.displayUpdate = false;
+    }, err=>{
+      this.toastrFailed(err.error),
+      this.displayUpdate = true;
+    } );
+    
   }
 
   deletePackage(id) {
-    this.srv3.deleteById(id).subscribe(data => console.log(data), error => console.log(error));
+    this.srv3.deleteById(id).subscribe(data =>{
+      console.log(data),
+      this.toastrSuccess("delete package success"),
+      this.reload()
+    } , error =>{
+      console.log(error),
+      this.toastrFailed(error.error)
+    } );
   }
 
   findDetailByIdPack(id){
@@ -132,6 +174,16 @@ export class QuestionPackageListComponent implements OnInit {
     this.srv.findDetailByIdPack(idpack).subscribe(data => {
       this.detail = data; console.log(this.detail);
     })
+  }
+
+  toastrSuccess(msg: any){
+    this.toastr.success(msg, "Success")
+  }
+
+  toastrFailed(error: any){
+    this.toastr.error(error,"Failed", {
+      timeOut: 1000
+    });
   }
 
 }

@@ -78,13 +78,24 @@ export class QuestionListComponent implements OnInit {
     console.log(this.question);
     this.srv.addQuestion(this.question)
     .subscribe(data=>{
-      console.log(data)
-    } , error=>
-      console.log(error));
+      console.log(data),
+      this.toastrSuccess("add question success"),
+      this.getQuestion()
+    } , error=>{
+      console.log(error),
+      this.toastrFailed(error.error)
+    });
     // this.display = false;
   }
   deleteQuestion(id){
-    this.srv.deleteById(id).subscribe(data=>console.log(data), error=>console.log(error)); 
+    this.srv.deleteById(id).subscribe(data=>{
+      console.log(data),
+      this.toastrSuccess("delete question success"),
+      this.getQuestion()
+    }, error=>{
+      console.log(error),
+      this.toastrFailed(error.error)
+    } ); 
   }
   public updateQuest(id) {
     this.displayUpd = true;
@@ -98,16 +109,22 @@ export class QuestionListComponent implements OnInit {
     let respons = this.srv.updatequest(this.question);
     respons.subscribe((data)=>{
       this.question = data
+      this.toastrSuccess("update question success"),
+      this.getQuestion(),
+      this.displayUpd = false;
+    }, err=>{
+      this.toastrFailed(err.error),
+      this.displayUpd = true;
     })
-    this.displayUpd = false;
+    
   }
 
-  toastrSuccess(){
-    this.toastr.success("Success")
+  toastrSuccess(msg: any){
+    this.toastr.success(msg, "Success")
   }
 
   toastrFailed(error: any){
-    this.toastr.error(error,"Login gagal", {
+    this.toastr.error(error,"Failed", {
       timeOut: 1000
     });
   }

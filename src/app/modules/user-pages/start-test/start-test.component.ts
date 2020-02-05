@@ -30,9 +30,6 @@ export class StartTestComponent implements OnInit {
 
   constructor(private srv:GlobalService, private srv2:DetailApplicantAnswerService, private router:Router) { 
   }
-  
-   
-
   ngOnInit() {
     this.answer.applicantAnswer = new ApplicantAnswer(null, null);
     this.canName = this.srv.getName();
@@ -53,22 +50,19 @@ export class StartTestComponent implements OnInit {
           c.applicantAnswer = this.answer.applicantAnswer;
           c.packageQuestion = new PackagDetail(this.packQ.packageDetails[i].packageQuestionId, null, null);
           canAnswerNew.push(JSON.parse(JSON.stringify(c)));
+          console.log(JSON.stringify(c));
         }
         else{
           canAnswerNew.push(this.canAnswer[item]);
         }
       }
       this.canAnswer = canAnswerNew;
+
     }
     else{
-      let a = this.packQ.packageDetails[i].packageQuestionId;
-      console.log(a);
-      let c:DetailApplicantAnswer = new DetailApplicantAnswer();
-      c.applicantAnswer = this.answer.applicantAnswer;
-      c.packageQuestion = new PackagDetail(this.packQ.packageDetails[i].packageQuestionId, null, null);
-      console.log(JSON.stringify(c));
-      this.canAnswer.push(JSON.parse(JSON.stringify(c)));
-  
+      // let a = this.packQ.packageDetails[i].packageQuestionId;
+      // console.log(a);
+      this.saveQuestion(i);
       console.log("Jawaban "+ JSON.stringify(this.answer.applicantAnswer));
       console.log(this.canAnswer);
       // this.indeksQuestion ++;
@@ -76,6 +70,7 @@ export class StartTestComponent implements OnInit {
       console.log("indeks question "+this.indeksQuestion)
     }
     this.indeksQuestion ++;
+    this.isPrev = false;
     
   }
   prevQuest(i){
@@ -96,10 +91,13 @@ export class StartTestComponent implements OnInit {
     this.packQ = this.paket;
     this.indeksQuestion = 0;
     this.isPrev = false;
+    this.canAnswer = [];
   }
-  sumbitQuest(){
-
-    this.srv2.submitAnswer(this.srv.getUserID(),this.canAnswer).subscribe(data=>console.log(data), error=>console.log(error))
+  sumbitQuest(i){
+    this.saveQuestion(i);
+    //save question
+    this.srv2.submitAnswer(this.srv.getUserID(),this.canAnswer).
+    subscribe(data=>console.log(data), error=>console.log(error))
     this.indeksPaket ++;
     if (this.indeksPaket == this.pakets.length){
       this.router.navigateByUrl('user-page/finish-test')
@@ -109,8 +107,14 @@ export class StartTestComponent implements OnInit {
       this.isShowQuestion = false;
       this.isPrev = false;
     }
-    
-    
+
+  }
+  saveQuestion(i){
+    let c:DetailApplicantAnswer = new DetailApplicantAnswer();
+    c.applicantAnswer = this.answer.applicantAnswer;
+    c.packageQuestion = new PackagDetail(this.packQ.packageDetails[i].packageQuestionId, null, null);
+    console.log(JSON.stringify(c));
+    this.canAnswer.push(JSON.parse(JSON.stringify(c)));
   }
 
 

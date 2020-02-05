@@ -110,6 +110,25 @@
                                                 </div>
                                             </div> 
                                         </div>
+                                        <div class="box-footer">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="pull-right" [hidden] = "indeksQuestion == 0">
+                                                        <button type="button" class="btn btn-sm btn-primary" (click)="prevQuest(i)"><i class="fa fa-backward"></i> Prev</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="pull-left">
+                                                        <div *ngIf="indeksQuestion+1 == paket.packageDetails.length; else templateName4">
+                                                            <button type="button" class="btn btn-sm btn-primary" (click)="sumbitQuest(i)"><i class="fa fa-forward"></i> Submit</button>
+                                                        </div>
+                                                        <ng-template #templateName4>
+                                                            <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Next</button>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <ng-template #templateName5>
                                         <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda 2'; else templateName6">
@@ -127,33 +146,52 @@
                                                     <input type="checkbox">{{pak.question.data.choiceD}}
                                                 </div>
                                             </div>
+                                            <div class="box-footer">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="pull-right" [hidden] = "indeksQuestion == 0">
+                                                            <button type="button" class="btn btn-sm btn-primary" (click)="prevQuest(i)"><i class="fa fa-backward"></i> Prev</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="pull-left">
+                                                            <div *ngIf="indeksQuestion+1 == paket.packageDetails.length; else templateName4">
+                                                                <button type="button" class="btn btn-sm btn-primary" (click)="sumbitQuest(i)"><i class="fa fa-forward"></i> Submit</button>
+                                                            </div>
+                                                            <ng-template #templateName4>
+                                                                <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Next</button>
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </ng-template>
                                     <ng-template #templateName6>
-                                        <div class="ui-g">
-                                            <textarea></textarea>
-                                        </div>
+                                            <div class="ui-g">
+                                                <textarea></textarea>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="pull-right" [hidden] = "indeksQuestion == 0">
+                                                            <button type="button" class="btn btn-sm btn-primary" (click)="prevQuest(i)"><i class="fa fa-backward"></i> Prev</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="pull-left">
+                                                            <div *ngIf="indeksQuestion+1 == paket.packageDetails.length; else templateName4">
+                                                                <button type="button" class="btn btn-sm btn-primary" (click)="sumbitQuest(i)"><i class="fa fa-forward"></i> Submit</button>
+                                                            </div>
+                                                            <ng-template #templateName4>
+                                                                <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Next</button>
+                                                            </ng-template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </ng-template>
                             <!-- /.box-body -->
-                            <div class="box-footer">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="pull-right" [hidden] = "indeksQuestion == 0">
-                                            <button type="button" class="btn btn-sm btn-primary" (click)="prevQuest(i)"><i class="fa fa-backward"></i> Prev</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="pull-left">
-                                            <div *ngIf="indeksQuestion+1 == paket.packageDetails.length; else templateName4">
-                                                <button type="button" class="btn btn-sm btn-primary" (click)="sumbitQuest()"><i class="fa fa-forward"></i> Submit</button>
-                                            </div>
-                                            <ng-template #templateName4>
-                                                <button type="button" class="btn btn-sm btn-primary" (click)="nextQuest(i)"><i class="fa fa-forward"></i> Next</button>
-                                            </ng-template>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             </div>
                             </div>
                             

@@ -1,6 +1,6 @@
 export class ApplicantAnswer {
-    answer1: string;
-    answer2: string;
+    answer1: any;
+    answer2: any;
     constructor(
         answer1: any,
         answer2: any

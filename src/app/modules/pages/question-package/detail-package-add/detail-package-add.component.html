@@ -3,8 +3,8 @@
       Add Package Details
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="#">Question Packages</a></li>
+      <li><a href="admin-page"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="admin-page/package">Question Packages</a></li>
       <li class="active">Add Package Details</li>
     </ol>
   </section>
@@ -14,8 +14,10 @@
       <div class="col-md-12">
         <div class="box box-info">
             <div class="box-body">
-                
                 <div class="ui-g">
+                    <div class="ui-g-12">
+                        <button pButton type="button" icon="pi pi-backward" label="Back" onclick="history.go(-1)"></button>
+                    </div>
                     <div class="ui-g-6">
                         <div class="ui-g-4">
                             <b>Package Name</b>
@@ -80,48 +82,52 @@
                     </div>
                     <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
                     <p-messages [value]="msgs"></p-messages>
-
+                    <p-dialog header="View Question" [(visible)]="viewQues" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="true" [resizable]="true">
+                    <div class="ui-g">
+                        <div class="ui-g-4">
+                            <b>Question Title</b>
+                        </div>
+                        <div class="ui-g-8">
+                            {{question.questionTitle}}
+                        </div>
+                        <div class="ui-g-4">
+                            <b>Date of Created</b>
+                        </div>
+                        <div class="ui-g-8">
+                            {{question.dateOfQuestion | date: 'yyyy-MM-dd hh:mm'}}
+                        </div>
+                        <div class="ui-g-4">
+                            <b>Question Type</b>
+                        </div>
+                        <div class="ui-g-8">
+                            {{question.questionType?.questionTypeTitle}}
+                        </div>
+                        <div class="ui-g-4">
+                            <b>Question Data</b>
+                        </div>
+                        <div class="ui-g-8">
+                            <td style="padding: 5px;">{{question.data?.question}}</td>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-6"><p-card><b>A: </b>{{question.data?.choiceA}}</p-card></div>
+                        <div class="ui-g-6"><p-card><b>B: </b>{{question.data?.choiceB}}</p-card></div>
+                        <div class="ui-g-6"><p-card><b>C: </b>{{question.data?.choiceC}}</p-card></div>
+                        <div class="ui-g-6"><p-card><b>D: </b>{{question.data?.choiceD}}</p-card></div>
+                    </div>
+                    <div class="ui-g">
+                        <div *ngIf="question.answer?.validAnswer2 == null; else template1">
+                            <div class="ui-g-12">{{"Valid Answer : "+question.answer?.validAnswer1}}</div>    
+                        </div>
+                        <ng-template #template1>
+                            <div class="ui-g-6">{{"Valid Answer : "+question.answer?.validAnswer1}}</div>
+                            <div class="ui-g-6">{{"Valid Answer 2nd : "+question.answer?.validAnswer2}}</div>
+                        </ng-template>
+                    </div>
+                    </p-dialog>
                 </p-fieldset>
 
-                <p-dialog header="View Question" [(visible)]="viewQues" [modal]="true" [style]="{width: '50vw'}"
-                [baseZIndex]="10000" [draggable]="true" [resizable]="true">
-                <div class="ui-g">
-                    <div class="ui-g-4">
-                        <b>Question Title</b>
-                    </div>
-                    <div class="ui-g-8">
-                        {{question.questionTitle}}
-                    </div>
-                    <div class="ui-g-4">
-                        <b>Date of Created</b>
-                    </div>
-                    <div class="ui-g-8">
-                        {{question.dateOfQuestion | date: 'yyyy-MM-dd hh:mm'}}
-                    </div>
-                    <div class="ui-g-4">
-                        <b>Question Type</b>
-                    </div>
-                    <div class="ui-g-8">
-                        {{question.questionType?.questionTypeTitle}}
-                    </div>
-                    <div class="ui-g-4">
-                        <b>Question Data</b>
-                    </div>
-                    <div class="ui-g-8">
-                        <td style="padding: 5px;">{{question.data?.question}}</td>
-                    </div>
-                </div>
-                <div class="ui-g">
-                    <div class="ui-g-6">{{"A : "+question.data?.choiceA}}</div>
-                    <div class="ui-g-6">{{"B : "+question.data?.choiceB}}</div>
-                    <div class="ui-g-6">{{"C : "+question.data?.choiceC}}</div>
-                    <div class="ui-g-6">{{"D : "+question.data?.choiceD}}</div>
-                </div>
-                <div class="ui-g">
-                    <div class="ui-g-6">{{"Valid Answer : "+question.answer?.validAnswer1}}</div>
-                    <div class="ui-g-6">{{"Valid Answer 2nd : "+question.answer?.validAnswer2}}</div>
-                </div>
-            </p-dialog>
+               
             </div>
         </div>
       </div>

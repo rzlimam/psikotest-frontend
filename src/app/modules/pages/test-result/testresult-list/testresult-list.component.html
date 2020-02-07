@@ -4,7 +4,7 @@
       <small>list all of tes result</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="admin-page"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Test Result</li>
     </ol>
 </section>
@@ -13,9 +13,8 @@
         <div class="col-md-12">
           <div class="box box-info">
             <div class="box-body">
-              <div class="pull-right">
-                  <a href="#"><small>Show full statistics...</small></a>
-              </div>
+              <button type="button" (click)="toStat()" style="margin-bottom: 10px;" class="btn btn-flat btn-warning btn-xs"><i class="fa fa-list-ul"></i> Show Reports</button>
+
               <p-table [value]="result">
                       <ng-template pTemplate = "header">
                           <tr>

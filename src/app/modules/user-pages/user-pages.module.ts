@@ -12,10 +12,11 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {ButtonModule} from 'primeng/button';
 import { StartTestComponent } from './start-test/start-test.component';
 import {CardModule} from 'primeng/card';
-import { UserLayoutModule } from '../user-layout/user-layout.module';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 import { PackageDescriptionComponent } from './package-description/package-description.component';
+import {ToastModule} from 'primeng/toast';
+
 
 
 
@@ -31,9 +32,9 @@ import { PackageDescriptionComponent } from './package-description/package-descr
     SplitButtonModule,
     ButtonModule,
     CardModule,
-    UserLayoutModule,
     RadioButtonModule,
-    FormsModule
+    FormsModule,
+    ToastModule
 
   ]
 })

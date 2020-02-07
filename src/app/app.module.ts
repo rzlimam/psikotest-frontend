@@ -13,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { KakiComponent } from './components/kaki/kaki.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -24,7 +26,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     HomeComponent,
     KakiComponent,
     ContactComponent,
-    LandingpageComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,11 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     DropdownModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      preventDuplicates: true
+    })
   ],
   providers: [
     // { provide: LocationStrategy, useClass: HashLocationStrategy }

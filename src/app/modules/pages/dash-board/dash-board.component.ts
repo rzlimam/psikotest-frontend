@@ -43,7 +43,7 @@ export class DashBoardComponent implements OnInit {
     resp.subscribe(res=>{this.dashData = res});
   }
   getToken(){
-    this.srv.ambilToken(this.glb.getToken()).subscribe(res=>{console.log('berhasil')}, 
+    this.srv.ambilToken().subscribe(res=>{console.log('berhasil')}, 
     error=>{console.log(error)});
     }
   }

@@ -27,7 +27,7 @@ export class DetailPackageAddComponent implements OnInit {
   pack:any = new Package(null, null, null, null, null, null, null);
   question:any = new Questions(null, null, null, null, null, null, null, null);
   cols:any[];
-  viewQues : boolean;
+  viewQues = false;
   selectedQuestion: PackagDetail;
   id:any;
   idQT:any;

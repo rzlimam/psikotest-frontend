@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { LoginService } from 'src/app/common/services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $;
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   username = '';
   password = '';
 
-  constructor(private srv:LoginService) {
+  constructor(private srv:LoginService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -26,12 +27,15 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
   logIn(){
-    console.log("you are logging in")
+    console.log("you are logging in");
     this.srv.loginUser(this.username, this.password)
+
   }
 
   ngOnDestroy(): void {
     $('body').removeClass('hold-transition login-page');
   }
+
+  
 
 }

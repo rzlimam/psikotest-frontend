@@ -1,1 +1,54 @@
-<p>testresult-stat works!</p>
+<section class="content-header">
+    <h1>
+      Report
+      <small>Report all about test result</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="admin-page"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="admin-page/result">Test Result</a></li>
+      <li class="active">Result Statistics</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-body">
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <button type="button" class="btn btn-danger btn-block btn-flat" (click)="getReportCorPerPackage()">Report for
+                    Easiest Question Each Package</button>
+                </div>
+                <div class="ui-g-12">
+                  <button type="button" class="btn btn-default btn-block btn-flat" (click)="getReportFsPerPeckage()">Report for The
+                    Most Difficult Question For Each Package</button>    
+                </div>
+                <div class="ui-g-12">
+                  <button type="button" class="btn btn-primary btn-block btn-flat" (click)="getMostCorrect()">Reprort for Easiest
+                    Question in All Package</button>    
+                </div>
+                <div class="ui-g-12">
+                  <button type="button" class="btn btn-success btn-block btn-flat" (click)="getMostWrong()">Report for The Most
+                    Difficult Question in All Package</button>    
+                </div>
+                <div class="ui-g-12">
+                  <button type="button" class="btn btn-info btn-block btn-flat" (click)="geteasiestPackage()">Report for Easiest
+                    Question Package</button>    
+                </div>
+                <div class="ui-g-12">
+                  <button type="button" class="btn btn-warning btn-block btn-flat" (click)="getMostDifficultPackage()">Report for
+                    The
+                    Most Difficult Question Package</button>    
+                </div>
+              
+              </div>
+              
+              
+              
+              
+              
+            </div>
+           </div>
+        </div>
+    </div>
+</section>

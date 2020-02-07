@@ -11,6 +11,7 @@ import { validAnswer } from 'src/app/common/model/ValidAnswer';
 import { error } from 'protractor';
 import {ConfirmationService} from 'primeng/api';
 import {Message} from 'primeng/api';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -45,7 +46,8 @@ export class QuestionListComponent implements OnInit {
   displayUpd: boolean = false;
 
 
-  constructor(private srv:QuestionService, private srv2:QuestionTypeService, private confirmationService:ConfirmationService) { }
+  constructor(private srv:QuestionService, private srv2:QuestionTypeService, 
+    private confirmationService:ConfirmationService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.question.data = new QuestionData(null,null,null,null,null,null);
@@ -74,7 +76,11 @@ export class QuestionListComponent implements OnInit {
   }
   saveQuestion(){
     console.log(this.question);
-    this.srv.addQuestion(this.question).subscribe(data=>console.log(data), error=>console.log(error));
+    this.srv.addQuestion(this.question)
+    .subscribe(data=>{
+      console.log(data)
+    } , error=>
+      console.log(error));
     // this.display = false;
   }
   deleteQuestion(id){
@@ -90,7 +96,19 @@ export class QuestionListComponent implements OnInit {
     console.log(id);
     console.log(this.question);
     let respons = this.srv.updatequest(this.question);
-    respons.subscribe((data) => this.question = data);
+    respons.subscribe((data)=>{
+      this.question = data
+    })
     this.displayUpd = false;
+  }
+
+  toastrSuccess(){
+    this.toastr.success("Success")
+  }
+
+  toastrFailed(error: any){
+    this.toastr.error(error,"Login gagal", {
+      timeOut: 1000
+    });
   }
 }

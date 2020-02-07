@@ -12,7 +12,6 @@ import {LayoutModule} from '../layout/layout.module';
 import { CandidateComponent } from './candidate/candidate.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
-import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
 
 //primeNG module
@@ -38,7 +37,7 @@ import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, ResultTestComponent, UserComponent],
+  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, UserComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

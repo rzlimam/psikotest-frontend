@@ -1,41 +1,63 @@
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="../../index2.html"><b>L</b>inov<b>P</b>sikotes</a>
   </div>
 
   <div class="register-box-body">
-      <div class="pull-left">
-        <small><a href="#" onclick="history.go(-1)"><i class="fa fa-backward"></i> Back</a></small>
-      </div>
+    <div class="pull-left">
+      <small><a href="#" onclick="history.go(-1)"><i class="fa fa-backward"></i> Back</a></small>
+    </div>
     <p class="login-box-msg">Register a new membership</p>
     <form action="../../index.html" method="post">
       <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Full name" type="text">
+        <input id="name" name="profileName" [(ngModel)]="user.profileName" class="form-control" placeholder="Full Name"
+          type="text">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Email" type="email">
+        <input id="email" name="email" [(ngModel)]="user.email" class="form-control" placeholder="Email" type="text">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Password" type="password">
+        <input id="address" name="address" [(ngModel)]="user.address" class="form-control" placeholder="Address"
+          type="text">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Retype password" type="password">
+        <input id="positon" name="phone" [(ngModel)]="user.phone" class="form-control"
+          placeholder="Phone Number" type="text">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
+      <div class="form-group">
+        <select class="form-control" name="appliedPosition" [(ngModel)]="user.appliedPosition">
+          <option>--Select Position--</option>
+          <option>HR</option>
+          <option>Bootcamp Programmer</option>
+          <option>Frontend Developer</option>
+          <option>Backend Developer</option>
+          <option>System Analyst</option>
+
+        </select>
+      </div>
+      <div class="form-group has-feedback">
+        <input id="date" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" class="form-control" placeholder="DOB"
+          type="date">
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <!-- <input id="gender" name="gender" [(ngModel)]="user.gender" class="form-control" placeholder="gender"
+          type="text">
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span> -->
+        <p>Gender</p>
+        <p-radioButton name="groupname" value="Pria" label="Male" [(ngModel)]="user.gender">
+        </p-radioButton> &nbsp;
+        <p-radioButton name="groupname" value="Wanita" label="Female" [(ngModel)]="user.gender"></p-radioButton>
+      </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> I agree to the <a href="#">terms</a>
-            </label>
-          </div>
-        </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button class="btn btn-primary btn-block btn-flat" type="submit">Register</button>
+        <div class="col-xs-4 pull-right">
+          <button class="btn btn-primary btn-block btn-flat" type="submit" (click)="saveUser()"
+            href="/login">Register</button>
         </div>
         <!-- /.col -->
       </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalService } from './global.service';
 
 
 
@@ -10,9 +11,9 @@ export class ProfileService {
   private baseUrl = 'http://bootcamp.linovhr.com:8080/psikotest2';
   
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private glob:GlobalService) { }
   
   public getProfileList(){
-   return this.http.get(this.baseUrl+'/user/candidate');
+   return this.http.get(this.baseUrl+'/user/candidate', this.glob.getHeader());
   }
 }

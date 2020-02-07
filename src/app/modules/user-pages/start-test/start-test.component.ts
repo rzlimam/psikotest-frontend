@@ -29,6 +29,8 @@ export class StartTestComponent implements OnInit {
   packQ:any;
   isPrev = false;
   countPrev = 0;
+  amountTime : number ; 
+  interval ;
 
   constructor(private srv:GlobalService, private srv2:DetailApplicantAnswerService, private router:Router) { 
   }
@@ -98,6 +100,7 @@ export class StartTestComponent implements OnInit {
     this.isShowQuestion = true;
     this.isShowInstruction = false;
     this.paket = this.pack[i].packages;
+    this.amountTime = this.pack[i].packages.amountOfTime;
     this.packQ = this.paket;
     this.indeksQuestion = 0;
     this.isPrev = false;
@@ -105,6 +108,7 @@ export class StartTestComponent implements OnInit {
   }
   sumbitQuest(i){
     this.saveQuestion(i);
+    this.stopTimer();
     this.srv2.submitAnswer(this.srv.getUserID(),this.canAnswer).
     subscribe(data=>{
       this.aftersubmit(); 
@@ -116,11 +120,12 @@ export class StartTestComponent implements OnInit {
     
   }
   aftersubmit(){
-    this.indeksPaket ++;
+    ++this.indeksPaket;
     if (this.indeksPaket == this.pakets.length){
       this.router.navigateByUrl('user-page/finish-test')
     }
     else{
+
       this.isShowInstruction = true;
       this.isShowQuestion = false;
       this.isPrev = false;
@@ -202,11 +207,13 @@ export class StartTestComponent implements OnInit {
 
   }
 
-  sumbitQuest2(i){
-    if(this.selectedAnswer.length!==2){
+  sumbitQuest2(i, isTimer?:boolean){
+    
+    if(!isTimer && this.selectedAnswer.length!==2){
       alert("Jawab yang bener woi!")
     }
     else{
+      this.stopTimer();
       let c:DetailApplicantAnswer = new DetailApplicantAnswer();
       c.applicantAnswer = this.answer.applicantAnswer;
       c.applicantAnswer.answer1 = this.selectedAnswer[0];
@@ -225,6 +232,66 @@ export class StartTestComponent implements OnInit {
       
     }
     
+  }
+
+  sumbitTimer() {
+    console.log(this.pack[this.indeksPaket]);
+    
+    if(this.pack[this.indeksPaket].packages.questionType.questionTypeTitle=="pilihan ganda 2"){
+      this.sumbitQuest2(this.indeksPaket, true);
+    }
+    else{
+      this.sumbitQuest(this.indeksPaket);
+    }
+  }
+
+  hours: number;
+  minutes: number;
+  seconds: number;
+  pot: number;
+  // timeLeft: number = this.amountTime;
+  startTimer() {
+    this.minutes = this.amountTime % 60;
+    this.pot = this.amountTime / 60;
+    this.hours = Math.floor(this.pot);
+    this.seconds = 0;
+    // this.minutes = 0;
+    // this.seconds = 5;
+    console.log(this.hours);
+    console.log(this.minutes);
+    console.log(this.seconds);
+    this.interval = setInterval(() => {
+      if (this.seconds == 0) {
+        this.minutes--;
+        console.log(this.minutes);
+      }
+      if (this.minutes == -1) {
+        this.hours--;
+        this.minutes = 59;
+        console.log(this.hours);
+        console.log(this.minutes);
+      }
+      if (this.seconds > 0) {
+        this.seconds--;
+        console.log(this.seconds);
+      } else {
+        this.seconds = 59;
+      }
+      if (this.hours < 0) {
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0;
+        this.stopTimer();
+        // console.log(this.i2);
+        // this.grabQuestion(this.i2 + 1);
+        this.sumbitTimer();
+      }
+    }, 1000)
+  }
+
+
+  stopTimer() {
+    clearInterval(this.interval);
   }
 
 

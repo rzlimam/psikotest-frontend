@@ -4,7 +4,7 @@
       <small>list all of question types</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="admin-page"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Question Types</li>
     </ol>
 </section>
@@ -18,22 +18,13 @@
                         <th *ngFor="let col of cols2">
                             {{col.header}}
                         </th>
-                        <th style="width:7em">Action</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-qType>
                     <tr>
                         <td>{{qType.questionTypeTitle}}</td>
                         <td>{{qType.amountOfAnswer}}</td>
-                        <td style="text-align: center;">
-                          <button pButton type="button" icon="pi pi-pencil" class="ui-button-info"></button>
-                        </td>
                     </tr>
-                </ng-template>
-                <ng-template pTemplate="summary" let-rowData>
-                    <div style="text-align:left">
-                        <button type="button" pButton icon="fa fa-plus" (click)="showDialog2()"  label="Add"></button>
-                    </div>
                 </ng-template>
               </p-table>
 

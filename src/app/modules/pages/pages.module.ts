@@ -12,10 +12,8 @@ import {LayoutModule} from '../layout/layout.module';
 import { CandidateComponent } from './candidate/candidate.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
-import { QuestionpackageComponent } from './questionpackage/questionpackage.component';
 import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
-import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
 
 //primeNG module
 import {TableModule} from 'primeng/table';
@@ -40,7 +38,7 @@ import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, QuestionpackageComponent, ResultTestComponent, UserComponent, AddPackageDetailComponent],
+  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, ResultTestComponent, UserComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

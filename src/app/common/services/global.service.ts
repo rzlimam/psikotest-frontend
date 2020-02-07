@@ -13,4 +13,8 @@ export class GlobalService {
     var userID = JSON.parse(localStorage.getItem('profile'));
     return userID.userId;
   }
+  getToken(){
+    var iniToken = localStorage.getItem('auth_token');
+    return iniToken;
+  }
 }

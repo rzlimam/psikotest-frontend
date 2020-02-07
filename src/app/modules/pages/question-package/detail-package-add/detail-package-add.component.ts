@@ -40,6 +40,7 @@ export class DetailPackageAddComponent implements OnInit {
     resp.subscribe((data)=>this.details=data);
     this.id = this.route.snapshot.paramMap.get('id');
     this.srv3.getById(this.id).subscribe(data=>{this.pack=data;
+          console.log(data);
           this.idQT = this.pack.questionType.questionTypeId;
           let resp2 = this.srv2.getByQType(this.idQT);
           resp2.subscribe((data)=>this.question=data);
@@ -49,6 +50,7 @@ export class DetailPackageAddComponent implements OnInit {
       {field : 'question.questionType.questionTypeTitle', header : 'Question Type'},
       {field : 'question.dateOfQuestion', header : 'Question Date'}
     ];
+    
   }
   pickQuestion(){
     this.confirmationService.confirm({

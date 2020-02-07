@@ -27,7 +27,7 @@ export class DescriptionTestComponent implements OnInit {
   getQuestion(){
     let header = new HeaderApplicantAnswer(null, null, null, null, null, null)
     header.user = this.srv2.getUserID();
-    this.srv3.addApplicantAnswer(header).subscribe((data)=>console.log(data), error=>console.log(error));
+    // this.srv3.addApplicantAnswer(header).subscribe((data)=>console.log(data), error=>console.log(error));
     this.srv.findByUser(this.userId).subscribe(data=>{this.assign = data; console.log(this.assign);
     localStorage.setItem('questionPackage', JSON.stringify(this.assign))
     });

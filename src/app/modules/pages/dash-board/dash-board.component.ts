@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { DashboardService } from 'src/app/common/services/dashboard.service';
+import { GlobalService } from 'src/app/common/services/global.service';
+import { log } from 'util';
+import { error } from 'protractor';
 
 interface Book {
   name: string;
@@ -15,7 +18,7 @@ export class DashBoardComponent implements OnInit {
   data: any;
   dashData: any;
 
-  constructor(private srv:DashboardService) {
+  constructor(private srv:DashboardService, private glb:GlobalService) {
     this.data = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
@@ -39,5 +42,10 @@ export class DashBoardComponent implements OnInit {
     let resp = this.srv.dashboardContent();
     resp.subscribe(res=>{this.dashData = res});
   }
+  getToken(){
+    this.srv.ambilToken(this.glb.getToken()).subscribe(res=>{console.log('berhasil')}, 
+    error=>{console.log(error)});
+    }
+  }
 
-}
+

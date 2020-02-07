@@ -58,7 +58,7 @@ export class QuestionPackageListComponent implements OnInit {
   findbyid(id) {
     this.display4 = true;
     this.srv3.getById(id).subscribe(data => {
-      this.p = data;
+      this.p = data; this.findDetailByPackId(this.p.packageId)
     })
   }
   public updatePackage(id) {

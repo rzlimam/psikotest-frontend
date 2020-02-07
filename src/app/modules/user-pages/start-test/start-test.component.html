@@ -66,7 +66,8 @@
                             </div>
                             <div *ngFor="let pak of paket.packageDetails; let i = index">
                             <div class="box-body" [hidden] = "i !== indeksQuestion">
-                                <strong> Question:</strong>
+                                
+                                <strong> Question number : {{i+1}}</strong>
                                 <p-card>
                                     <p>{{pak.question.data.question}}
                                     </p>
@@ -79,7 +80,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" id="a{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceA}}~@{{i}}">
+                                                          <input type="radio" id="a{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceA}}">
                                                           {{pak.question.data.choiceA}}
                                                         </label>
                                                     </div>
@@ -87,7 +88,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" id="b{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceB}}~@{{i}}">
+                                                          <input type="radio" id="b{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceB}}">
                                                           {{pak.question.data.choiceB}}
                                                         </label>
                                                     </div>
@@ -95,7 +96,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" id="c{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceC}}~@{{i}}">
+                                                          <input type="radio" id="c{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceC}}">
                                                           {{pak.question.data.choiceC}}
                                                         </label>
                                                     </div>
@@ -103,7 +104,7 @@
                                                 <div class="ui-g-6">
                                                     <div class="radio">
                                                         <label>
-                                                          <input type="radio" id="d{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceD}}~@{{i}}">
+                                                          <input type="radio" id="d{{i}}" [(ngModel)]="answer.applicantAnswer.answer1" value="{{pak.question.data.choiceD}}">
                                                           {{pak.question.data.choiceD}}
                                                         </label>
                                                     </div>
@@ -134,10 +135,10 @@
                                         <div *ngIf="paket.questionType.questionTypeTitle == 'pilihan ganda 2'; else templateName6">
                                             <div class="form-group">
                                                 <div class="ui-g">
-                                                    <div class="ui-g-12"><p-checkbox name="group1" value="{{pak.question.data.choiceA}}" label="{{pak.question.data.choiceA}}" [(ngModel)]="selectedAnswer" inputId="a"></p-checkbox></div>
-                                                    <div class="ui-g-12"><p-checkbox name="group1" value="{{pak.question.data.choiceB}}" label="{{pak.question.data.choiceB}}" [(ngModel)]="selectedAnswer" inputId="b"></p-checkbox></div>
-                                                    <div class="ui-g-12"><p-checkbox name="group1" value="{{pak.question.data.choiceC}}" label="{{pak.question.data.choiceC}}" [(ngModel)]="selectedAnswer" inputId="c"></p-checkbox></div>
-                                                    <div class="ui-g-12"><p-checkbox name="group1" value="{{pak.question.data.choiceD}}" label="{{pak.question.data.choiceD}}" [(ngModel)]="selectedAnswer" inputId="d"></p-checkbox></div>
+                                                    <div class="ui-g-6"><p-checkbox name="group1" value="{{pak.question.data.choiceA}}" label="{{pak.question.data.choiceA}}" [(ngModel)]="selectedAnswer" inputId="a"></p-checkbox></div>
+                                                    <div class="ui-g-6"><p-checkbox name="group1" value="{{pak.question.data.choiceB}}" label="{{pak.question.data.choiceB}}" [(ngModel)]="selectedAnswer" inputId="b"></p-checkbox></div>
+                                                    <div class="ui-g-6"><p-checkbox name="group1" value="{{pak.question.data.choiceC}}" label="{{pak.question.data.choiceC}}" [(ngModel)]="selectedAnswer" inputId="c"></p-checkbox></div>
+                                                    <div class="ui-g-6"><p-checkbox name="group1" value="{{pak.question.data.choiceD}}" label="{{pak.question.data.choiceD}}" [(ngModel)]="selectedAnswer" inputId="d"></p-checkbox></div>
                                                 </div>
                                             </div>
                                             <div class="box-footer">
@@ -163,7 +164,7 @@
                                     </ng-template>
                                     <ng-template #templateName6>
                                             <div class="ui-g">
-                                                <textarea></textarea>
+                                                <textarea pInputTextarea [(ngModel)]="answer.applicantAnswer.answer1"></textarea>
                                             </div>
                                             <div class="box-footer">
                                                 <div class="row">

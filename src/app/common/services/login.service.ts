@@ -30,7 +30,7 @@ export class LoginService {
   }, (error)=>console.log(error))
   }
   logout(){
-    localStorage.removeItem('token');
+    localStorage.clear();
   }
   public get logIn():boolean{
     return (localStorage.getItem('token') !== null);

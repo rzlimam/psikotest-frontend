@@ -37,7 +37,7 @@
                 <td>{{col.description}}</td>
                 <td>
                   <div class="ui-g">
-                    <div class="ui-g-4"><a type="button" (click)="findDetailByPackId(col.packageId)" class="btn btn-info"><i class="fa fa-search"></i></a></div>
+                    <div class="ui-g-4"><a type="button" (click)="findbyid(col.packageId)" class="btn btn-info"><i class="fa fa-search"></i></a></div>
                     <div class="ui-g-4"><a type="button" (click)="updatePackage(col.packageId)" class="btn btn-warning"><i class="fa fa-pencil"></i></a></div>
                     <div class="ui-g-4"><a type="button" (click)="deletePackage(col.packageId)" href="admin-page/package" onclick="return confirm ('Are you sure')" class="btn btn-danger"><i class="fa fa-trash"></i></a></div>
                   </div>
@@ -100,9 +100,7 @@
           <p-dialog header="Package Detail" [(visible)]="display4" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
               [draggable]="false" [resizable]="false">
               <div style="text-align: center;">
-                <!-- <p-progressSpinner [style]="{width: '50px', height: '50px'}" strokeWidth="8" fill="#EEEEEE" [hidden]="p.packageName != null" ></p-progressSpinner> -->
               </div>
-              <!-- <div [hidden]="p.packageName == null" class="ui-g"> -->
                 <p-table [value]="detail">
                   <ng-template pTemplate="header">
                     <tr>
@@ -125,29 +123,8 @@
                     </tr>
                   </ng-template>
                 </p-table>
-                <!-- <div class="ui-g-4"><b>Package Name</b></div>
-                <div class="ui-g-8">{{p.packageName}}</div>
-              </div>
-              <div [hidden]="p.packageName == null" class="ui-g">
-                <div class="ui-g-4"><b>Working Time</b></div>
-                <div class="ui-g-8">{{p.amountOfTime}}</div>
-              </div>
-              <div [hidden]="p.packageName == null" class="ui-g">
-                <div class="ui-g-4"><b>Description</b></div>
-                <div class="ui-g-8">{{p.description}}</div>
-              </div>
-              <div [hidden]="p.packageName == null" class="ui-g">
-                <div class="ui-g-4"><b>Question Type</b></div>
-                <div class="ui-g-8">{{p.questionType?.questionTypeTitle}}</div>
-              </div>
-              <div [hidden]="p.packageName == null" class="ui-g">
-                <div class="ui-g-4"><b>Questions</b></div>
-                <div class="ui-g-8"><a href="#">Show Details...</a></div> -->
-              <!-- </div> -->
                   <p-footer>
-                  <!-- <p-footer [hidden]="p.packageName == null"> -->
                       <button type="button" (click)="addDetailPackage(p.packageId)" pButton icon="pi pi-plus" label="Add Questions"></button>
-                      <button type="button" pButton icon="pi pi-pencil" (click)="display4=false" label="Edit Package Detail"></button>
                   </p-footer>
           </p-dialog>
           <p-dialog header="Assign Packages" [(visible)]="assignDsp" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"

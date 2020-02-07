@@ -4,11 +4,8 @@ import {PagesComponent} from './pages/pages.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { QuestionListComponent } from './question-list/question-list.component';
-import { QuestionpackageComponent } from './questionpackage/questionpackage.component';
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
-import { ResultTestComponent } from './result-test/result-test.component';
 import { UserComponent } from './user/user.component';
-import { AddPackageDetailComponent } from './questionpackage/add-package-detail/add-package-detail.component';
 
 
 const routes: Routes = [

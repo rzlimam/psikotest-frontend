@@ -39,7 +39,7 @@
                   <div class="ui-g">
                     <div class="ui-g-4"><a type="button" (click)="findbyid(col.packageId)" class="btn btn-info"><i class="fa fa-search"></i></a></div>
                     <div class="ui-g-4"><a type="button" (click)="updatePackage(col.packageId)" class="btn btn-warning"><i class="fa fa-pencil"></i></a></div>
-                    <div class="ui-g-4"><a type="button" (click)="deletePackage(col.packageId)" href="admin-page/package" onclick="return confirm ('Are you sure')" class="btn btn-danger"><i class="fa fa-trash"></i></a></div>
+                    <div class="ui-g-4"><a type="button" (click)="deletePackage(col.packageId)"  onclick="return confirm ('Are you sure')" class="btn btn-danger"><i class="fa fa-trash"></i></a></div>
                   </div>
                 </td>
               </tr>
@@ -70,7 +70,7 @@
                 </div>
               </form>
                   <p-footer>
-                    <a type="button" pButton icon="pi pi-check" (click)="savePackage()" href="admin-page/package" label=" Save"></a>
+                    <a type="button" pButton icon="pi pi-check" (click)="savePackage()" label=" Save"></a>
                   </p-footer>
           </p-dialog>
           <p-dialog header="Edit Package" [(visible)]="displayUpdate" [modal]="true" [style]="{width: '50vw'}"
@@ -91,7 +91,7 @@
             </div>
           </form>
           <p-footer>
-            <a type="button" pButton icon="pi pi-check" (click)="update(p.packageId)" href="admin-page/package"
+            <a type="button" pButton icon="pi pi-check" (click)="update(p.packageId)" 
               label=" Save">
             </a>
           </p-footer>
@@ -142,7 +142,7 @@
                       </div>
                     </form>
                     <p-footer>
-                        <a type="button" pButton icon="pi pi-check" onclick="return confirm('Are you sure?')" (click)="saveAssign()" href="admin-page/package/assign-question" label="Save"></a>
+                        <a type="button" pButton icon="pi pi-check" onclick="return confirm('Are you sure?')" (click)="saveAssign()" label="Save"></a>
                     </p-footer>
           </p-dialog>
         </div>

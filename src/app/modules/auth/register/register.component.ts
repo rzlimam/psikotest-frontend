@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   saveUser() {
     this.user.isActive = "true";
+    console.log(this.user);
     this.srv.addUser(this.user).subscribe(data => {
       console.log(data),
       this.toastrSuccess("Silahkan cek email anda untuk melihat password")

@@ -13,14 +13,7 @@
   <section class="content">
       <div class="row">
         <div class="col-md-12">
-          <!-- Custom Tabs -->
-                <p-card>
-                  <div class="ui-g">
-                      <input id="input" type="text" size="30" pInputText placeholder="Search by Question Title"> &nbsp;
-                      <input id="input" type="text" size="30" pInputText placeholder="Search by Question Type"> &nbsp;
-                      <button pButton icon="pi pi-search" label="Search"></button>
-                  </div>
-                </p-card>              
+          <!-- Custom Tabs -->            
                 <br>
                 <p-table [columns]="cols1" [value]="qList" dataKey="questionTitle" [paginator]="true" [rows]="10">
                   <ng-template pTemplate="header" let-columns>
@@ -46,7 +39,7 @@
                           <td style="text-align: center;">
                             <button pButton type="button" (click)="updateQuest(rowData.questionId)" icon="pi pi-pencil" class="ui-button-info"></button> &nbsp;
                             <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-                            <button pButton type="button" (click)="deleteQuestion(rowData.questionId)" icon="pi pi-trash" class="ui-button-danger"></button>
+                            <button pButton type="button" onclick="return confirm('Are you sure?')" (click)="deleteQuestion(rowData.questionId)" icon="pi pi-trash" class="ui-button-danger"></button>
                           </td>
                       </tr>
                   </ng-template>

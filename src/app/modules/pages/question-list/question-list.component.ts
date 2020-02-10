@@ -47,7 +47,7 @@ export class QuestionListComponent implements OnInit {
 
 
   constructor(private srv:QuestionService, private srv2:QuestionTypeService, 
-    private confirmationService:ConfirmationService, private toastr: ToastrService) { }
+    private confirmationService:ConfirmationService, private toastr: ToastrService, private router:Router) { }
 
   ngOnInit() {
     this.question.data = new QuestionData(null,null,null,null,null,null);
@@ -74,13 +74,18 @@ export class QuestionListComponent implements OnInit {
     this.newQuestion = true;
     this.display = true;
   }
+  reload(){
+    this.router.navigateByUrl('admin-page/question-list')
+  }
   saveQuestion(){
     console.log(this.question);
     this.srv.addQuestion(this.question)
     .subscribe(data=>{
       console.log(data),
       this.toastrSuccess("add question success"),
+      this.display = false,
       this.getQuestion()
+      
     } , error=>{
       console.log(error),
       this.toastrFailed(error.error)

@@ -17,6 +17,8 @@ interface Book {
 export class DashBoardComponent implements OnInit {
   data: any;
   dashData: any;
+  recent: any;
+  ranking: any;
 
   constructor(private srv:DashboardService, private glb:GlobalService) {
     this.data = {
@@ -41,6 +43,10 @@ export class DashBoardComponent implements OnInit {
   ngOnInit() {
     let resp = this.srv.dashboardContent();
     resp.subscribe(res=>{this.dashData = res});
+    let resp2 = this.srv.recentTest();
+    resp2.subscribe(res=>{this.recent = res});
+    let resp3 = this.srv.rankingTest();
+    resp3.subscribe(res=>{this.ranking = res});
   }
   getToken(){
     this.srv.ambilToken().subscribe(res=>{console.log('berhasil')}, 

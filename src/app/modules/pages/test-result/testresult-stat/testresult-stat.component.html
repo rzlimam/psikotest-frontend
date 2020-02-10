@@ -13,42 +13,43 @@
     <div class="row">
         <div class="col-md-12">
           <div class="box box-info">
-            <div class="box-body">
-              <div class="ui-g">
-                <div class="ui-g-12">
-                  <button type="button" class="btn btn-danger btn-block btn-flat" (click)="getReportCorPerPackage()">Report for
-                    Easiest Question Each Package</button>
-                </div>
-                <div class="ui-g-12">
-                  <button type="button" class="btn btn-default btn-block btn-flat" (click)="getReportFsPerPeckage()">Report for The
-                    Most Difficult Question For Each Package</button>    
-                </div>
-                <div class="ui-g-12">
-                  <button type="button" class="btn btn-primary btn-block btn-flat" (click)="getMostCorrect()">Reprort for Easiest
-                    Question in All Package</button>    
-                </div>
-                <div class="ui-g-12">
-                  <button type="button" class="btn btn-success btn-block btn-flat" (click)="getMostWrong()">Report for The Most
-                    Difficult Question in All Package</button>    
-                </div>
-                <div class="ui-g-12">
-                  <button type="button" class="btn btn-info btn-block btn-flat" (click)="geteasiestPackage()">Report for Easiest
-                    Question Package</button>    
-                </div>
-                <div class="ui-g-12">
-                  <button type="button" class="btn btn-warning btn-block btn-flat" (click)="getMostDifficultPackage()">Report for
-                    The
-                    Most Difficult Question Package</button>    
-                </div>
-              
-              </div>
-              
-              
-              
-              
-              
+            <div class="box-body table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Report</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Report for Easiest Question Each Package</td>
+                            <td><button type="button" class="btn btn-primary btn-block btn-flat" (click)="getReportCorPerPackage()"><i class="fa fa-download"></i></button></td>
+                          </tr>
+                          <tr>
+                            <td>Report for The Most Difficult Question For Each Package</td>
+                            <td><button type="button" class="btn btn-primary btn-block btn-flat" (click)="getReportFsPerPeckage()"><i class="fa fa-download"></i></button></td>
+                          </tr>
+                          <tr>
+                            <td>Reprort for Easiest Question in All Package</td>
+                            <td><button type="button" class="btn btn-primary btn-block btn-flat" (click)="getMostCorrect()"><i class="fa fa-download"></i></button></td>
+                          </tr>
+                          <tr>
+                            <td>Report for The Most Difficult Question in All Package</td>
+                            <td><button type="button" class="btn btn-primary btn-block btn-flat" (click)="getMostWrong()"><i class="fa fa-download"></i></button></td>
+                          </tr>
+                          <tr>
+                            <td>Report for Easiest Question Package</td>
+                            <td><button type="button" class="btn btn-primary btn-block btn-flat" (click)="geteasiestPackage()"><i class="fa fa-download"></i></button></td>
+                          </tr>
+                          <tr>
+                            <td>Report for The Most Difficult Question Package</td>
+                            <td><button type="button" class="btn btn-primary btn-block btn-flat" (click)="getMostDifficultPackage()"><i class="fa fa-download"></i></button></td>
+                          </tr>
+                        </tbody>
+                      </table>
             </div>
-           </div>
-        </div>
+            </div>
+            </div>
     </div>
 </section>

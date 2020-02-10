@@ -91,38 +91,32 @@
           </div>
         </div>
       </div> -->
-      <!-- <div class="col-md-6">
+      <div class="col-md-12">
         <div class="box box-info">
           <div class="box-header with-border">
-            <i class="fa fa-bullhorn"></i>
-            <h3 class="box-title">Recent Test</h3>
-            <div class="pull-right">
-              <a href="#"><small>Show Details</small></a>
-            </div>
+            <i class="pi pi-sort-amount-down"></i>
+            <h3 class="box-title">Test Ranking</h3>
           </div>
           <div class="box-body">
-            <p-table [columns]="cols" [value]="cars" [lazy]="true" (onLazyLoad)="loadCarsLazy($event)" [paginator]="true" 
-                [rows]="10" [totalRecords]="totalRecords" [loading]="loading">
-                <ng-template pTemplate="header" let-columns>
+            <p-table [value]="ranking" [paginator]="true" [rows]="10">
+                <ng-template pTemplate="header">
                     <tr>
                         <th>No</th>
                         <th>Nama Kandidat</th>
-                        <th>Waktu Tes</th>
-                        <th>Status</th>
-                        <th>Posisi</th>
+                        <th>Nilai</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-rowData let i=index let-columns="columns">
+                <ng-template pTemplate="body" let-rowData let-i="rowIndex">
                     <tr>
                         <td>{{i+1}}</td>
-                        <td>e</td>
-                        <td>f</td>
+                        <td>{{rowData.profileName}}</td>
+                        <td>{{rowData.totalPoint}}</td>
                     </tr>
                 </ng-template>
             </p-table>
           </div>
         </div>
-      </div> -->
+      </div>
       <!-- /.col -->
       <!-- <div class="col-md-6">
         <div class="box box-info">
@@ -132,7 +126,7 @@
           </div>
           <div class="box-body">
             <p-table>
-                <ng-template pTemplate="header" let-columns>
+                <ng-template pTemplate="header" [value]="recent">
                     <tr>
                         <th>No</th>
                         <th>Nama Kandidat</th>

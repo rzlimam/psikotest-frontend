@@ -17,4 +17,10 @@ export class DashboardService {
     console.log(this.glob.getHeader());
     return this.http.get(this.apiURL + '/question', this.glob.getHeader());
   }
+  public recentTest(){
+    return this.http.get(this.apiURL + '/dashboard/recent', this.glob.getHeader());
+  }
+  public rankingTest(){
+    return this.http.get(this.apiURL + '/dashboard/ranking', this.glob.getHeader());
+  }
 }

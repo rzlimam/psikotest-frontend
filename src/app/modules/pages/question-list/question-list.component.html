@@ -51,7 +51,6 @@
                 <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
                   <tr>
                       <td [attr.colspan]="columns.length + 2">
-                        
                           <div class="ui-g ui-fluid" style="font-size:14px;padding:5px">
                               <div class="ui-g-12 ui-sm-9">
                                   <div class="ui-g">
@@ -90,13 +89,19 @@
                                           <tr>
                                             <td style="padding: 5px;"> D. {{rowData.data?.choiceD}}</td>
                                           </tr>
-                                          <tr>
-                                            <th rowspan="2" style="width: 200px; padding: 5px;">Correct Answer</th>
-                                            <td style="padding: 5px;"> {{rowData.answer?.validAnswer1}}</td>
+                                          <tr *ngIf="rowData.answer?.validAnswer2 == null; else template10">
+                                              <th style="width: 200px; padding: 5px;">Correct Answer</th>
+                                              <td style="padding: 5px;"> {{rowData.answer?.validAnswer1}}</td>
                                           </tr>
-                                          <tr>
-                                            <td style="padding: 5px;"> {{rowData.answer?.validAnswer2}}</td>
-                                          </tr>
+                                          <ng-template #template10>
+                                            <tr>
+                                              <th rowspan="2" style="width: 200px; padding: 5px;">Correct Answer</th>
+                                              <td style="padding: 5px;"> {{rowData.answer?.validAnswer1}}</td>
+                                            </tr>
+                                            <tr>
+                                              <td style="padding: 5px;"> {{rowData.answer?.validAnswer2}}</td>
+                                            </tr>
+                                          </ng-template>
                                         </table>
                                       </div>
                                   </div>

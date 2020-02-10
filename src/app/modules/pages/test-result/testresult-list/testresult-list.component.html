@@ -31,7 +31,7 @@
                               <td>{{res.user?.profile?.profileName}}</td>
                               <td>{{res.user?.profile?.appliedPosition}}</td>
                               <td>{{res.dateOfAnswer | date: 'yyyy-MM-dd hh:mm'}}</td>
-                              <td>{{res.totalPoint}}</td>
+                              <td>{{res.totalPoint / res.totalQuestion * 100}}</td>
                               <td><div *ngIf="res.status == 'Lulus'; else templateName">
                                         <div class="label label-success"><b>Lulus</b></div>
                                   </div>
@@ -53,7 +53,7 @@
             <div class="ui-g-6"><b>Candidate Name : </b> {{det[0]?.headerApplicantAnswer?.user?.profile?.profileName}}</div>
             <div class="ui-g-6"><b>Exam Time : </b> {{det[0]?.headerApplicantAnswer?.dateOfAnswer | date: 'yyyy-MM-dd hh:mm'}}</div>
             <div class="ui-g-6"><b>Final Score : </b> {{det[0]?.headerApplicantAnswer?.totalPoint}}</div>
-            <div class="ui-g-6"><b>Applied position : </b> </div>
+            <div class="ui-g-6"><b>Applied position : </b> {{det[0]?.headerApplicantAnswer?.user?.profile?.appliedPosition}} </div>
           </div>
           <hr>
           <p-table [value]="det" [paginator]="true" [rows]="10">

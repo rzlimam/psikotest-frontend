@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ export class UserService {
   private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private glob:GlobalService) { }
   public getAllUser() {
-    return this.http.get(this.apiURL + '/user');
+    return this.http.get(this.apiURL + '/user', this.glob.getHeader());
   }
   public getUserById(id) {
     return this.http.get(this.apiURL + '/user/' + id);

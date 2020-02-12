@@ -70,13 +70,70 @@
   </div>
   <!-- /.row -->
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-sm-12">
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title"> Welcome Page</h3>
+            <i class="pi pi-sort-amount-down"></i>
+            <h3 class="box-title">Test Ranking (Top 5)</h3>
           </div>
           <div class="box-body">
-            <a href="admin-page/question-list" target="_blank"><img src="https://i.imgur.com/qnzZAYK.png" style="height: 800px;"></a>
+            <p-table [value]="ranking">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 50px;">No</th>
+                        <th>Nama Kandidat</th>
+                        <th style="width: 100px;">Nilai</th>
+                        <th>Applied Position</th>
+                        <th>Date of Answer</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-i="rowIndex">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{rowData.user?.profile?.profileName}}</td>
+                        <td>{{rowData.score}}</td>
+                        <td>{{rowData.user?.profile?.appliedPosition}}</td>
+                        <td>{{rowData.dateOfAnswer | date: 'EEEE, dd MMMM yyyy - HH:mm'}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <i class="fa fa-hourglass-end"></i> 
+            <h3 class="box-title">Recent Test</h3>
+          </div>
+          <div class="box-body">
+            <p-table [value]="recent" [paginator]="true" [rows]="5">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 50px;">No</th>
+                        <th>Nama Kandidat</th>
+                        <th>Posisi</th>
+                        <th>Waktu Tes</th>
+                        <th style="width: 100px;">Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-i2="rowIndex">
+                    <tr>
+                        <td>{{i2+1}}</td>
+                        <td>{{rowData.user?.profile?.profileName}}</td>
+                        <td>{{rowData.user?.profile?.appliedPosition}}</td>
+                        <td>{{rowData.dateOfAnswer | date: 'EEEE, dd MMMM yyyy - HH:mm'}}</td>
+                        <td>
+                            <div *ngIf="rowData.status == 'Lulus'; else templateName">
+                              <div class="label label-success"><b>Lulus</b></div>
+                            </div>
+                            <ng-template #templateName>
+                              <div class="label label-danger"><b>Tidak Lulus</b></div>
+                            </ng-template>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
           </div>
         </div>
       </div>
@@ -91,32 +148,7 @@
           </div>
         </div>
       </div> -->
-      <div class="col-md-12">
-        <div class="box box-info">
-          <div class="box-header with-border">
-            <i class="pi pi-sort-amount-down"></i>
-            <h3 class="box-title">Test Ranking</h3>
-          </div>
-          <div class="box-body">
-            <p-table [value]="ranking" [paginator]="true" [rows]="10">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Kandidat</th>
-                        <th>Nilai</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-i="rowIndex">
-                    <tr>
-                        <td>{{i+1}}</td>
-                        <td>{{rowData.profileName}}</td>
-                        <td>{{rowData.totalPoint}}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-          </div>
-        </div>
-      </div>
+      
       <!-- /.col -->
       <!-- <div class="col-md-6">
         <div class="box box-info">

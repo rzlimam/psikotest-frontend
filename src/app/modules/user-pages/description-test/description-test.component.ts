@@ -15,7 +15,7 @@ import {MessageService} from 'primeng/api';
 })
 export class DescriptionTestComponent implements OnInit {
   userId:any;
-  assign: any = new QuestionAssign(null, null, null);
+  assign: any =[];
   head: any = new HeaderApplicantAnswer(null, null, null, null, null, null)
   currentDate = new Date();
   isChecked = [];
@@ -33,8 +33,19 @@ export class DescriptionTestComponent implements OnInit {
       let header = new HeaderApplicantAnswer(null, null, null, null, null, null)
       header.user = this.srv2.getUserID();
       this.srv.findByUser(this.userId).subscribe(data=>{this.assign = data; console.log(this.assign);
-      localStorage.setItem('questionPackage', JSON.stringify(this.assign));
-      this.router.navigateByUrl('user-page/start-test');
+        if(this.assign == null){
+          console.log("sini");
+          alert("Anda belum mendapat soal")
+        }
+        else if(this.assign.length == 0){
+          console.log("situ");
+          alert("Anda sudah mengerjakan soal")
+        }
+        else{
+          localStorage.setItem('questionPackage', JSON.stringify(this.assign));
+          this.router.navigateByUrl('user-page/start-test');
+        };
+      
       });
       
     }

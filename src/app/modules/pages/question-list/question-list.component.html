@@ -16,6 +16,11 @@
           <!-- Custom Tabs -->            
                 <br>
                 <p-table [columns]="cols1" [value]="qList" dataKey="questionTitle" [paginator]="true" [rows]="10">
+                  <ng-template pTemplate="caption">
+                    <div class="ui-helper-clearfix" style="text-align: left">
+                        <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
+                    </div>
+                  </ng-template>
                   <ng-template pTemplate="header" let-columns>
                       <tr>
                           <th style="width: 3em"></th>
@@ -45,7 +50,6 @@
                   </ng-template>
                 <ng-template pTemplate="summary" let-rowData>
                     <div style="text-align:left">
-                        <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">

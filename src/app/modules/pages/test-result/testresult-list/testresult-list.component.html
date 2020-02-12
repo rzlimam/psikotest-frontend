@@ -31,7 +31,7 @@
                               <td>{{res.user?.profile?.profileName}}</td>
                               <td>{{res.user?.profile?.appliedPosition}}</td>
                               <td>{{res.dateOfAnswer | date: 'yyyy-MM-dd hh:mm'}}</td>
-                              <td>{{res.totalPoint / res.totalQuestion * 100}}</td>
+                              <td>{{res.score}}</td>
                               <td><div *ngIf="res.status == 'Lulus'; else templateName">
                                         <div class="label label-success"><b>Lulus</b></div>
                                   </div>

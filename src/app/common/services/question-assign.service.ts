@@ -11,6 +11,6 @@ export class QuestionAssignService {
     return this.http.get(this.apiURL + '/questionassign');
   }
   public findByUser(id){
-    return this.http.get(this.apiURL + '/questionassign/user/' + id);
+    return this.http.get(this.apiURL + '/questionassign/question/' + id);
   }
 }

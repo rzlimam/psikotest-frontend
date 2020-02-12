@@ -105,6 +105,9 @@ export class StartTestComponent implements OnInit {
     this.indeksQuestion = 0;
     this.isPrev = false;
     this.canAnswer = [];
+    this.selectedAnswer = [];
+    this.answer.applicantAnswer = new ApplicantAnswer(null, null);
+
   }
   sumbitQuest(i){
     this.saveQuestion(i);
@@ -268,12 +271,9 @@ export class StartTestComponent implements OnInit {
       if (this.minutes == -1) {
         this.hours--;
         this.minutes = 59;
-        console.log(this.hours);
-        console.log(this.minutes);
       }
       if (this.seconds > 0) {
         this.seconds--;
-        console.log(this.seconds);
       } else {
         this.seconds = 59;
       }

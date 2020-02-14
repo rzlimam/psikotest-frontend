@@ -7,6 +7,7 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuardAdminService as AuthGuard } from 'src/app/common/services/auth-guard-admin.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
         {path: 'question-list', component: QuestionListComponent, canActivate: [AuthGuard]},
         {path: 'question-type', component: QuestiontypeComponent, canActivate: [AuthGuard]},
         {path: 'users', component: UserComponent, canActivate: [AuthGuard]},
+        {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
         {path: 'package', canActivate: [AuthGuard], loadChildren: () => import('./question-package/question-package.module').then(m=>m.QuestionPackageModule)},
         {path: 'result', canActivate: [AuthGuard], loadChildren: () =>import('./test-result/test-result.module').then(m=>m.TestResultModule)}
     ]

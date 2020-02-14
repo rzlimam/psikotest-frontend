@@ -13,6 +13,8 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestiontypeComponent } from './questiontype/questiontype.component';
 import { UserComponent } from './user/user.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
 
 //primeNG module
 import {TableModule} from 'primeng/table';
@@ -32,12 +34,14 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {ToastModule} from 'primeng/toast';
+import {PasswordModule} from 'primeng/password';
+
 
 
 
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, UserComponent],
+  declarations: [PagesComponent, DashBoardComponent, CandidateComponent, QuestionListComponent, QuestiontypeComponent, UserComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -60,7 +64,8 @@ import {ToastModule} from 'primeng/toast';
     MultiSelectModule,
     FieldsetModule,
     ProgressSpinnerModule,
-    ToastModule
+    ToastModule,
+    PasswordModule
     ]
 })
 export class PagesModule {

@@ -1,0 +1,66 @@
+<section class="content-header">
+    <h1>
+      Test Result
+      <small>list all of tes result</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="admin-page"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Test Result</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-body">        
+                <button pButton type="button" icon="pi pi-backward" label="Back" onclick="history.go(-1)"></button>
+            <div class="ui-g">
+                 <div class="ui-g-6"><b>Candidate Name : </b> {{det[0]?.headerApplicantAnswer?.user?.profile?.profileName}}</div>
+                <div class="ui-g-6"><b>Exam Time : </b> {{det[0]?.headerApplicantAnswer?.dateOfAnswer | date: 'yyyy-MM-dd hh:mm'}}</div>
+                <div class="ui-g-6"><b>Final Score : </b> {{det[0]?.headerApplicantAnswer?.totalPoint}}</div>
+                <div class="ui-g-6"><b>Applied position : </b> {{det[0]?.headerApplicantAnswer?.user?.profile?.appliedPosition}} </div>
+            </div>
+                <hr>
+                <p-table [value]="det" [paginator]="true" [rows]="10">
+                    <ng-template pTemplate="header">
+                    <tr>
+                        <th>Question Package</th>
+                        <th>Question</th>
+                        <th>Applicant Answer</th>
+                        <th>Correct Answer</th>
+                        <th style="width: 75px;">Point</th>
+                    </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-detail>
+                    <tr>
+                        <td>{{detail.packageQuestion?.packages?.packageName}}</td>
+                        <td>{{detail.packageQuestion?.question?.data?.question}}</td>
+                        <td style="text-align: center;">
+                        <div *ngIf="detail.applicantAnswer?.answer2 == null; else templateName2">
+                            <div class="label label-primary">{{detail.applicantAnswer?.answer1}}</div>
+                            </div>
+                            <ng-template #templateName2>
+                            <div class="label label-primary">{{detail.applicantAnswer?.answer1}}</div><br>
+                            <div class="label label-primary">{{detail.applicantAnswer?.answer2}}</div>
+                            </ng-template>
+                        </td>
+                        <td style="text-align: center;">
+                        <div *ngIf="detail.packageQuestion?.question?.answer?.validAnswer2 == null; else templateName3">
+                            <div class="label label-success">{{detail.packageQuestion?.question?.answer?.validAnswer1}}</div>
+                            </div>
+                            <ng-template #templateName3>
+                            <div class="label label-success">{{detail.packageQuestion?.question?.answer?.validAnswer1}}</div><br>
+                            <div class="label label-success">{{detail.packageQuestion?.question?.answer?.validAnswer2}}</div>
+                            </ng-template>
+                        </td>
+                        <td>{{detail.point}}</td>
+                    </tr>
+                    </ng-template>
+                </p-table>
+                </div>
+                </div>
+        </div>
+        </div>
+        </section>
+
+ 

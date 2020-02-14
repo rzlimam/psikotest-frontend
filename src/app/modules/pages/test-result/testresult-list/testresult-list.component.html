@@ -40,15 +40,16 @@
                                   </ng-template>
                               </td>
                               <td>
-                                    <button type="button" (click)="findDetail(res.applicantAnswerId)" class="btn btn-block btn-default btn-xs"><i class="fa fa-expand"></i> Detail</button>
-                              </td>
+                                    <button type="button" (click)="toDet(res.applicantAnswerId)" class="btn btn-block btn-default btn-xs"><i class="fa fa-expand"></i> Detail</button>
+                               
+                                  </td>
                           </tr>
                       </ng-template>    
               </p-table>
             </div>
           </div>
         </div>
-        <p-dialog header="Test Result Detail" [(visible)]="detailAns" [modal]="true" [maximizable]="true" [draggable]="true" [resizable]="true" [autoZIndex] = "true">
+        <!-- <p-dialog header="Test Result Detail" [(visible)]="detailAns" [modal]="true" [maximizable]="true" [draggable]="true" [resizable]="true" [autoZIndex] = "true">
           <div class="ui-g">
             <div class="ui-g-6"><b>Candidate Name : </b> {{det[0]?.headerApplicantAnswer?.user?.profile?.profileName}}</div>
             <div class="ui-g-6"><b>Exam Time : </b> {{det[0]?.headerApplicantAnswer?.dateOfAnswer | date: 'yyyy-MM-dd hh:mm'}}</div>
@@ -92,7 +93,7 @@
               </tr>
             </ng-template>
           </p-table>
-        </p-dialog>
+        </p-dialog> -->
     </div>
 </section>
       

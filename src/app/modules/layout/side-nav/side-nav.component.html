@@ -14,44 +14,53 @@
     </div>
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
-    <ul class="sidebar-menu" data-widget="tree">
+    <ul class="sidebar-menu " data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-        <li><a href="admin-page">
-            <i class="fa fa-home"></i> <span>Home</span>
-            </a>
-        </li>
-      <li><a href="admin-page/users"> 
+      <li class="{{ liHome }}"><a class="{{disHom}}" href="admin-page">
+          <i class="fa fa-home"></i> <span>Home</span>
+        </a>
+      </li>
+
+      <li class="{{ liUsers }} "><a class="{{disUs}}" href="admin-page/users">
           <i class="fa fa-user"></i>
           <span>Users</span>
         </a>
       </li>
-      <li>
-        <a href="admin-page/candidates">
+      <li class="{{liCan}}">
+        <a class="{{disCan}}" href="admin-page/candidates">
           <i class="fa fa-briefcase"></i> <span>Candidates</span>
         </a>
       </li>
-      <li class="treeview">
-        <a href="#">
+      <li class="treeview {{liTest}}">
+        <a class="{{disTest}}" href="/admin-page">
           <i class="fa fa-book"></i> <span>Test</span>
           <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
         <ul class="treeview-menu">
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Question
+          <li class="treeview {{liQuestion}}">
+            <a class="{{disQues}}" href="/admin-page"><i class="fa fa-circle-o"></i> Question
               <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="admin-page/question-list"><i class="fa fa-circle-o"></i> Question Lists</a></li>
-              <li><a href="admin-page/question-type"><i class="fa fa-circle-o"></i> Question Types</a></li>
-              <li><a href="admin-page/package"><i class="fa fa-circle-o"></i> Question Packages</a></li>
+              <li class="{{ liql }}"><a class="{{disql}}" href="admin-page/question-list"><i class="fa fa-circle-o"></i>
+                  Question
+                  Lists</a></li>
+              <li class="{{liqt}}"><a class="{{disqt}}" href="admin-page/question-type"><i class="fa fa-circle-o"></i>
+                  Question Types</a>
+              </li>
+              <li class="{{liqp}}"><a class="{{disqp}}" href="admin-page/package"><i class="fa fa-circle-o"></i>
+                  Question Packages</a>
+              </li>
             </ul>
           </li>
-          <li><a href="admin-page/result"><i class="fa fa-circle-o"></i> Test Result</a></li>
+          <li class="{{ liRe }}"><a class="{{disRe}}" href="admin-page/result"><i class="fa fa-circle-o"></i> Test
+              Result</a></li>
         </ul>
+
       </li>
     </ul>
   </section>

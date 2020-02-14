@@ -81,17 +81,38 @@
                                             <td style="padding: 5px;">{{rowData.data?.question}}</td>
                                           </tr>
                                           <tr>
-                                            <th rowspan="4" style="width: 200px; padding: 5px;">Choice</th>
-                                            <td style="padding: 5px;"> A. {{rowData.data?.choiceA}}</td>
+                                            <div *ngIf="rowData.data?.choiceA.substring(0,4) == 'http'; else choiceA">
+                                              <th rowspan="4" style="width: 200px; padding: 5px;">Choice</th>
+                                              <td style="padding: 5px;"> A. <img src="{{rowData.data?.choiceA}}" alt="" width="100px"> </td>
+                                            </div>
+                                            <ng-template #choiceA>
+                                              <th rowspan="4" style="width: 200px; padding: 5px;">Choice</th>
+                                              <td style="padding: 5px;"> A. {{rowData.data?.choiceA}}</td>
+                                            </ng-template>
                                           </tr>
                                           <tr>
-                                            <td style="padding: 5px;"> B. {{rowData.data?.choiceB}}</td>
+                                            <div *ngIf="rowData.data?.choiceB.substring(0,4) == 'http'; else choiceB">
+                                              <td style="padding: 5px;"> B. <img src="{{rowData.data?.choiceB}}" alt="" width="100px"></td>
+                                            </div>
+                                            <ng-template #choiceB>
+                                              <td style="padding: 5px;"> B. {{rowData.data?.choiceB}}</td>
+                                            </ng-template>
                                           </tr>
                                           <tr>
-                                            <td style="padding: 5px;"> C. {{rowData.data?.choiceC}}</td>
+                                            <div *ngIf="rowData.data?.choiceC.substring(0,4) == 'http'; else choiceC">
+                                              <td style="padding: 5px;"> C. <img src="{{rowData.data?.choiceC}}" alt="" width="100px"></td>
+                                            </div>
+                                            <ng-template #choiceC>
+                                              <td style="padding: 5px;"> C. {{rowData.data?.choiceC}}</td>
+                                            </ng-template>
                                           </tr>
                                           <tr>
-                                            <td style="padding: 5px;"> D. {{rowData.data?.choiceD}}</td>
+                                            <div *ngIf="rowData.data?.choiceD.substring(0,4) == 'http'; else choiceD">
+                                              <td style="padding: 5px;"> D. <img src="{{rowData.data?.choiceD}}" alt="" width="100px"></td>
+                                            </div>
+                                            <ng-template #choiceD>
+                                              <td style="padding: 5px;"> D. {{rowData.data?.choiceD}}</td>
+                                            </ng-template>
                                           </tr>
                                           <tr *ngIf="rowData.answer?.validAnswer2 == null; else template10">
                                               <th style="width: 200px; padding: 5px;">Correct Answer</th>

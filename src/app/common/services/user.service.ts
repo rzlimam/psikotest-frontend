@@ -25,4 +25,10 @@ export class UserService {
   public updateUser(user: object) {
     return this.http.put(this.apiURL + '/user', user);
   }
+  public findByEmail(email){
+    return this.http.get(this.apiURL + '/email/'+email);
+  }
+  public forgotPassword(email){
+    return this.http.post(this.apiURL + '/forgotpassword/'+email, email);
+  }
 }

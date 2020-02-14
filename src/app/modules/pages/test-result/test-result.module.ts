@@ -24,10 +24,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {ToastModule} from 'primeng/toast';
+import { TestresultDetailComponent } from './testresult-detail/testresult-detail.component';
 
 
 @NgModule({
-  declarations: [TestresultListComponent, TestresultStatComponent],
+  declarations: [TestresultListComponent, TestresultStatComponent, TestresultDetailComponent],
   imports: [
     CommonModule,
     TestResultRoutingModule,

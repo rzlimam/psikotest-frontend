@@ -17,7 +17,8 @@ export class TestresultListComponent implements OnInit {
   display: boolean;
   detailAns: boolean;
   id:any;
-
+   
+  
   constructor(private service:HeaderApplicantAnswerService, private service2:DetailApplicantAnswerService,
     private router:Router) {  }
 
@@ -35,6 +36,10 @@ export class TestresultListComponent implements OnInit {
   }
   toStat(){
     this.router.navigateByUrl('admin-page/result/stat')
+  }
+
+  toDet(applicantAnswerId : any){
+    this.router.navigate(['admin-page/result/detail', applicantAnswerId])
   }
 
 }

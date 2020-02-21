@@ -7,7 +7,7 @@ import { GlobalService } from './global.service';
 })
 export class DashboardService {
 
-  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
+  private apiURL = 'http://localhost:8080';
   constructor(private http:HttpClient, private glob:GlobalService) { }
 
   public dashboardContent(){

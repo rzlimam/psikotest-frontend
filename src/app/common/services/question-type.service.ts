@@ -6,7 +6,7 @@ import { GlobalService } from './global.service';
   providedIn: 'root'
 })
 export class QuestionTypeService {
-  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
+  private apiURL = 'http://localhost:8080';
   constructor(private http: HttpClient, private glob:GlobalService) { }
   public getAllQuestionType() {
     return this.http.get(this.apiURL + '/questiontype',  this.glob.getHeader());

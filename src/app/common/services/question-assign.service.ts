@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class QuestionAssignService {
-  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
+  private apiURL = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
   public getAllQuestionAssign() {
     return this.http.get(this.apiURL + '/questionassign');

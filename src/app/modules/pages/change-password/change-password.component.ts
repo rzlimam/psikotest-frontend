@@ -35,6 +35,7 @@ export class ChangePasswordComponent implements OnInit {
       this.user = data,
       console.log(data),
       this.toastrSuccess("update password success");
+      this.router.navigateByUrl('admin-page');
     }, err=>{
       this.toastrFailed(err.error);
     });

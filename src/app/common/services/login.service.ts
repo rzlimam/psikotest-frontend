@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
+  private apiURL = 'http://localhost:8080';
   token;
 
   constructor(private storage:StorageMap, private http:HttpClient, private router:Router,

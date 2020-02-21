@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HeaderApplicantAnswerService {
 
-  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
+  private apiURL = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
 
   public getAllHeaderApplicantAnswer() {

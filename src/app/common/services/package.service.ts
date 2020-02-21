@@ -7,7 +7,7 @@ import { GlobalService } from './global.service';
   providedIn: 'root'
 })
 export class PackageService {
-  private apiURL = 'http://bootcamp.linovhr.com:8080/psikotest2';
+  private apiURL = 'http://localhost:8080';
   constructor(private http: HttpClient, private glob:GlobalService) { }
   public getAllPackage() {
     return this.http.get(this.apiURL + '/packages', this.glob.getHeader());
